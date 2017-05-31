@@ -14,13 +14,15 @@ import { AuthGuard } from './guards/index';
 import { AlertService, AuthenticationService, UserService } from './services/index';
 import { HomeComponent } from './home/index';
 import { RegisterComponent } from './register/index';
-import { ProjectListingComponent } from './project-listing/project-listing.component';
+import { ProjectListingComponent } from './projects/project-listing/project-listing.component';
 import {ProjectService} from './services/project.service';
-import { ProjectCardComponent } from './project-card/project-card.component';
+import { ProjectCardComponent } from './projects/project-card/project-card.component';
 import { HeaderComponent } from './header/header.component';
-import { ConceptCardComponent } from './concept-card/concept-card.component';
-import { ConceptListingComponent } from './concept-listing/concept-listing.component';
-import { ProjectEditComponent } from './project-edit/project-edit.component';
+import { ConceptCardComponent } from './concepts/concept-card/concept-card.component';
+import { ConceptListingComponent } from './concepts/concept-listing/concept-listing.component';
+import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { ConceptsComponent } from './concepts/concepts.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { ProjectEditComponent } from './project-edit/project-edit.component';
     HeaderComponent,
     ConceptCardComponent,
     ConceptListingComponent,
-    ProjectEditComponent
+    ProjectEditComponent,
+    ProjectsComponent,
+    ConceptsComponent
   ],
   imports: [
     BrowserModule,

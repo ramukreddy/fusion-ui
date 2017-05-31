@@ -1,6 +1,6 @@
 export interface Project {
     id: number;
-    projectName: string;
+    projectTitle: string;
     projectDescription: string;
     projectFromDate: Date;
     projectToDate: Date;

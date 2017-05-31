@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Project Title</label>
+            <input type="text" id="projectTitle" class="form-control" [(ngModel)]="model.projectTitle" #projectTitle="ngModel" required
+            />
+            <div *ngIf="f.submitted && !projectTitle.valid" class="help-block">Project Title is required</div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Project Description</label>
+            <textarea type="text" id="projectDescription" class="form-control" [(ngModel)]="model.projectDescription" #projectDescription="ngModel" rows="6"></textarea>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!f.valid">Save</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
