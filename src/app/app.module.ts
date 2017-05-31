@@ -14,6 +14,13 @@ import { AuthGuard } from './guards/index';
 import { AlertService, AuthenticationService, UserService } from './services/index';
 import { HomeComponent } from './home/index';
 import { RegisterComponent } from './register/index';
+import { ProjectListingComponent } from './project-listing/project-listing.component';
+import {ProjectService} from './services/project.service';
+import { ProjectCardComponent } from './project-card/project-card.component';
+import { HeaderComponent } from './header/header.component';
+import { ConceptCardComponent } from './concept-card/concept-card.component';
+import { ConceptListingComponent } from './concept-listing/concept-listing.component';
+import { ProjectEditComponent } from './project-edit/project-edit.component';
 
 
 @NgModule({
@@ -22,7 +29,13 @@ import { RegisterComponent } from './register/index';
     AlertComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProjectListingComponent,
+    ProjectCardComponent,
+    HeaderComponent,
+    ConceptCardComponent,
+    ConceptListingComponent,
+    ProjectEditComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +47,8 @@ import { RegisterComponent } from './register/index';
     AuthGuard,
     AlertService,
     AuthenticationService,
-    UserService
+    UserService,
+    ProjectService
   ],
   bootstrap: [AppComponent]
 })

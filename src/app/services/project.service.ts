@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import 'rxjs/add/operator/map'
 
-import { Project } from '../models/index';
+import { Project } from '../models/project';
 import { environment } from '../../environments/environment';
 
 
 @Injectable()
 export class ProjectService {
-    apiUrl = environment.apiUrl+'/api/projects';
+   // apiUrl = environment.apiUrl+'/api/projects';
+   apiUrl = "https://s3.amazonaws.com/praximlearning/projects.json";
     constructor(private http: Http) { }
 
     getAll() {
-        return this.http.get(this.apiUrl, this.jwt()).map((response: Response) => response.json());
+        return this.http.get(this.apiUrl).map((response: Response) => response.json());
     }
 
     getById(id: number) {
