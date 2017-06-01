@@ -1,7 +1,7 @@
 export interface Project {
-    id: number;
+    projectId: number;
     projectTitle: string;
     projectDescription: string;
-    projectFromDate: Date;
-    projectToDate: Date;
+    projectStartDate: Date;
+    projectEndDate: Date;
 }

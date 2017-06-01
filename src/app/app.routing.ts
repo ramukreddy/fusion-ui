@@ -9,14 +9,18 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ProjectListingComponent } from './projects/project-listing/project-listing.component';
 import { ConceptListingComponent } from './concepts/concept-listing/concept-listing.component';
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
+import { ProjectHomeComponent } from './projects/project-home/project-home.component';
+
 const appRoutes: Routes = [
   //  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   {
     path: 'projects', component: ProjectsComponent, children: [
       { path: '', component: ProjectListingComponent },
       { path: 'new', component: ProjectEditComponent },
+      { path: ':id', component: ProjectHomeComponent } ,     
       { path: ':id/edit', component: ProjectEditComponent }
 
     ]

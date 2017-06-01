@@ -4,8 +4,11 @@ import { User } from '../models/index';
 import { UserService } from '../services/index';
 
 @Component({
+    selector: 'app-home',
     moduleId: module.id,
-    templateUrl: 'home.component.html'
+    templateUrl: 'home.component.html',
+    styleUrls: ['./home.component.css']
+
 })
 
 export class HomeComponent implements OnInit {
@@ -17,14 +20,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadAllUsers();
     }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    }
 
-    private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
-    }
 }

@@ -23,6 +23,7 @@ import { ConceptListingComponent } from './concepts/concept-listing/concept-list
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ConceptsComponent } from './concepts/concepts.component';
+import { ProjectHomeComponent } from './projects/project-home/project-home.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ConceptsComponent } from './concepts/concepts.component';
     ConceptListingComponent,
     ProjectEditComponent,
     ProjectsComponent,
-    ConceptsComponent
+    ConceptsComponent,
+    ProjectHomeComponent
   ],
   imports: [
     BrowserModule,
