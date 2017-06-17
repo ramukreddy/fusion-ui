@@ -12,10 +12,10 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
         let bodyString = JSON.stringify({ username: username, password: password })
-        let headers      = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-        let options       = new RequestOptions({ headers: headers }); // Create a request option
+        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
 
-        return this.http.post(environment.apiUrl+'/login',bodyString, options)
+        return this.http.post(environment.apiUrl + '/login', bodyString, options)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let user = response.json();
@@ -29,5 +29,13 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+    }
+    isAuthenticated() {
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser) {
+            return currentUser.token != null;
+
+        }
+        return false;
     }
 }

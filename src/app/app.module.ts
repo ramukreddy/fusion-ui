@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { routing } from './app.routing';
 
 import { AlertComponent } from './directives/index';
+import { DropdownDirective } from './directives/index';
 import { AuthGuard } from './guards/index';
 import { AlertService, AuthenticationService, UserService } from './services/index';
 import { HomeComponent } from './home/index';
@@ -30,6 +31,7 @@ import { ProjectHomeComponent } from './projects/project-home/project-home.compo
   declarations: [
     AppComponent,
     AlertComponent,
+    DropdownDirective,    
     HomeComponent,
     LoginComponent,
     RegisterComponent,

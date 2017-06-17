@@ -7,17 +7,19 @@ import { AuthGuard } from './guards/index';
 import { LoginComponent } from './login/login.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectListingComponent } from './projects/project-listing/project-listing.component';
-import { ConceptListingComponent } from './concepts/concept-listing/concept-listing.component';
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
 import { ProjectHomeComponent } from './projects/project-home/project-home.component';
+import { ConceptListingComponent } from './concepts/concept-listing/concept-listing.component';
+import { ConceptsComponent } from './concepts/concepts.component';
+
 
 const appRoutes: Routes = [
-  //  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   {
-    path: 'projects', component: ProjectsComponent, children: [
+    path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard],children: [
       { path: '', component: ProjectListingComponent },
       { path: 'new', component: ProjectEditComponent },
       { path: ':id', component: ProjectHomeComponent } ,     
@@ -25,7 +27,13 @@ const appRoutes: Routes = [
 
     ]
   },
-  { path: 'concepts', component: ConceptListingComponent },
+  { path: 'concepts', component: ConceptsComponent, children: [
+      { path: '', component: ConceptListingComponent },
+      { path: 'my', component: ConceptListingComponent },
+      { path: 'available', component: ConceptListingComponent } ,     
+      { path: 'expired', component: ConceptListingComponent }
+
+    ]},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

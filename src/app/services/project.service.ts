@@ -8,8 +8,8 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ProjectService {
-   // apiUrl = environment.apiUrl+'/api/projects';
-   apiUrl = "https://s3.amazonaws.com/praximlearning/projects.json";
+    apiUrl = environment.apiUrl+'/api/projects';
+  // apiUrl = "https://s3.amazonaws.com/praximlearning/projects.json";
     constructor(private http: Http) { }
 
     getAll() {
@@ -25,7 +25,7 @@ export class ProjectService {
     }
 
     update(project: Project) {
-        return this.http.put(this.apiUrl + project.id, project, this.jwt()).map((response: Response) => response.json());
+        return this.http.put(this.apiUrl + project.projectId, project, this.jwt()).map((response: Response) => response.json());
     }
 
     delete(id: number) {
