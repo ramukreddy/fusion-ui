@@ -1,7 +1,10 @@
-export interface User {
-    id: number;
+export class User {
+    userId: number;
     email: string;
     password: string;
     firstName: string;
     lastName: string;
+    constructor (userIdentifucation:number){
+        this.userId=userIdentifucation;
+    }
 }

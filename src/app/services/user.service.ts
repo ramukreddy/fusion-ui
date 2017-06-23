@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
-    apiUrl = environment.apiUrl+'/api/users';
+    apiUrl = environment.apiUrl + '/api/users';
     constructor(private http: Http) { }
 
     getAll() {
@@ -15,7 +15,7 @@ export class UserService {
     }
 
     getById(id: number) {
-        return this.http.get(this.apiUrl+ id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get(this.apiUrl + id, this.jwt()).map((response: Response) => response.json());
     }
 
     create(user: User) {
@@ -23,7 +23,7 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put(this.apiUrl + user.id, user, this.jwt()).map((response: Response) => response.json());
+        return this.http.put(this.apiUrl + user.userId, user, this.jwt()).map((response: Response) => response.json());
     }
 
     delete(id: number) {
@@ -38,6 +38,13 @@ export class UserService {
         if (currentUser && currentUser.token) {
             let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
             return new RequestOptions({ headers: headers });
+        }
+    }
+
+    getLocalUser() {
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.user[0]) {
+            return currentUser.user[0];
         }
     }
 }

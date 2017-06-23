@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {ProjectService} from '../../services/project.service'
+import {ProjectService,UserService} from '../../services/index'
 import { Project } from '../../models/project';
 
 @Component({
@@ -12,13 +12,15 @@ export class ProjectListingComponent implements OnInit {
 
 projects: Array<any>;
 error:string;
-  constructor(private router: Router,private projectSerive: ProjectService) {
+  constructor(private router: Router,private projectSerive: ProjectService, private userService : UserService) {
             
     
    }
 
   ngOnInit() {
-    this.projectSerive.getAll().subscribe(
+
+    let localUser = this.userService.getLocalUser();
+    this.projectSerive.getAllByUserId(localUser.UserId).subscribe(
       data =>this.projects=data,
       error =>this.error = error.statusText
       

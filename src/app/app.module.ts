@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { TinyEditorComponent } from './utils/tiny-editor/tiny-editor.component';
 
 
 import { AppComponent } from './app.component';
@@ -16,7 +17,7 @@ import { AlertService, AuthenticationService, UserService } from './services/ind
 import { HomeComponent } from './home/index';
 import { RegisterComponent } from './register/index';
 import { ProjectListingComponent } from './projects/project-listing/project-listing.component';
-import {ProjectService} from './services/project.service';
+import { ProjectService } from './services/project.service';
 import { ProjectCardComponent } from './projects/project-card/project-card.component';
 import { HeaderComponent } from './header/header.component';
 import { ConceptCardComponent } from './concepts/concept-card/concept-card.component';
@@ -25,13 +26,17 @@ import { ProjectEditComponent } from './projects/project-edit/project-edit.compo
 import { ProjectsComponent } from './projects/projects.component';
 import { ConceptsComponent } from './concepts/concepts.component';
 import { ProjectHomeComponent } from './projects/project-home/project-home.component';
+import { EditorModule } from 'primeng/primeng';
+import { SharedModule } from 'primeng/primeng';
+import {PanelModule} from 'primeng/primeng';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AlertComponent,
-    DropdownDirective,    
+    DropdownDirective,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
@@ -43,13 +48,17 @@ import { ProjectHomeComponent } from './projects/project-home/project-home.compo
     ProjectEditComponent,
     ProjectsComponent,
     ConceptsComponent,
-    ProjectHomeComponent
+    ProjectHomeComponent,
+    TinyEditorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    EditorModule,
+    SharedModule,
+    PanelModule
   ],
   providers: [
     AuthGuard,

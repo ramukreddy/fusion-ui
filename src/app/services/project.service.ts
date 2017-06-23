@@ -12,20 +12,20 @@ export class ProjectService {
   // apiUrl = "https://s3.amazonaws.com/praximlearning/projects.json";
     constructor(private http: Http) { }
 
-    getAll() {
-        return this.http.get(this.apiUrl).map((response: Response) => response.json());
+    getAllByUserId(userId : Number) {
+        return this.http.get(this.apiUrl+"/user/"+userId).map((response: Response) => response.json());
     }
 
-    getById(id: number) {
+    getById(id: Number) {
         return this.http.get(this.apiUrl+ id, this.jwt()).map((response: Response) => response.json());
     }
 
     create(project: Project) {
-        return this.http.post(this.apiUrl, project, this.jwt()).map((response: Response) => response.json());
+        return this.http.post(this.apiUrl, project).map((response: Response) => response.json());
     }
 
     update(project: Project) {
-        return this.http.put(this.apiUrl + project.projectId, project, this.jwt()).map((response: Response) => response.json());
+        return this.http.put(this.apiUrl + project.ProjectId, project, this.jwt()).map((response: Response) => response.json());
     }
 
     delete(id: number) {

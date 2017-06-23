@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Form, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { AlertService } from "../../services/index";
+import { Project, User } from "../../models/index";
+import { ProjectService, UserService } from "../../services/index";
+
 
 @Component({
   selector: 'app-project-edit',
@@ -9,27 +12,54 @@ import { AlertService } from "../../services/index";
   styleUrls: ['./project-edit.component.css']
 })
 export class ProjectEditComponent implements OnInit {
-  model: any = {};
+  id: Number;
+  editMode = false;
+  model: Project;
 
 
-  constructor(private router: Router, private route: ActivatedRoute,private alertService:AlertService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private alertService: AlertService,
+    private projectService: ProjectService, private userService: UserService) { }
 
   ngOnInit() {
+    this.model = new Project();
+    this.route.params
+      .subscribe(
+      (params: Params) => {
+        this.id = +params['id'];
+        this.editMode = params['id'] != null;
+        this.initForm();
+      }
+      );
   }
 
   onSubmit() {
-    console.log(this.model);
-    var project = JSON.stringify(this.model);
-    console.log(project);
-     this.alertService.success("Project successfully created");
+    let localUser = this.userService.getLocalUser();
+    console.log(this.userService.getLocalUser());
+    this.model.user = new User(localUser.UserId);
+    console.log(this.model.user);
 
-
-
+    this.projectService.create(this.model).subscribe(
+      data => this.alertService.success("Your new project has been created "),
+      error => this.alertService.error(error));
 
   }
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
 
   }
+  initForm() {
+    console.log(" is it edit mode " + this.editMode);
 
+    if (this.editMode) {
+            this.projectService.getById(this.id).subscribe(
+              data=>console.log(data),
+              error=>console.log(error)
+            );
+
+    } else {
+      // this.model.ProjectTitle = "";
+      // this.model.ProjectDescription = "";
+    }
+
+  }
 }

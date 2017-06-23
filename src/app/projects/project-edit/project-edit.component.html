@@ -1,7 +1,7 @@
 <div class="row">
 
   <div class="col-xs-12">
-    <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <form (ngSubmit)="onSubmit(f.value)" #f="ngForm">
 
       <div class="row">
         <div class="col-xs-12">
@@ -10,10 +10,9 @@
         </div>
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="name">Project Title</label>
-            <input type="text" name="projectTitle" class="form-control" [(ngModel)]="model.projectTitle" #projectTitle="ngModel" required
-            />
-            <div *ngIf="f.submitted && !projectTitle.valid" class="help-block">Project Title is required</div>
+            <label for="title">Project Title</label>
+            <input type="text" name="title" class="form-control" [(ngModel)]="model.title" #title="ngModel" required />
+            <div *ngIf="f.submitted && !title.valid" class="help-block">Project Title is required</div>
 
           </div>
         </div>
@@ -22,17 +21,19 @@
         <div class="col-xs-12">
           <div class="form-group">
             <label for="description">Project Description</label>
-            <textarea type="text" name="projectDescription" class="form-control" [(ngModel)]="model.projectDescription" #projectDescription="ngModel"
-              rows="6"></textarea>
+
+            <p-editor name="description" [(ngModel)]="model.description" [style]="{'height':'320px'}" #description="ngModel"></p-editor>
+
+
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="projectStartDate">Project start date</label>
-            <input type="date" name="projectStartDate" [(ngModel)]="model.projectStartDate " (ngModelChange)="model.projectStartDate = $event"
-              #projectStartDate="ngModel" />
+            <label for="startDate">Project start date</label>
+            <input type="date" name="startDate" [(ngModel)]="model.startDate " (ngModelChange)="model.startDate = $event" #startDate="ngModel"
+            />
           </div>
         </div>
       </div>
@@ -40,9 +41,9 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="projectEndDate">Project end date</label>
-            <input type="date" name="projectEndDate" [(ngModel)]="model.projectEndDate " (ngModelChange)="model.projectEndDate = $event"
-              #projectEndDate="ngModel" />
+            <label for="endDate">Project end date</label>
+            <input type="date" name="endDate" [(ngModel)]="model.endDate " (ngModelChange)="model.endDate = $event" #endDate="ngModel"
+            />
           </div>
         </div>
       </div>

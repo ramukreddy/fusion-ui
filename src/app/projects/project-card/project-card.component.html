@@ -1,13 +1,24 @@
-<div class="card card-inverse">
+<div class="panel panel-info">
 
-  <h3 class="card-header">
-    {{ project.projectName }}
-  </h3>
-
-  <div class="card-block">
-    <p class="card-text">
-      {{ project.projectDescription}}
-    </p>
-    <a routerLink="{{project.projectId }}" class="btn btn-primary">Go to project home</a>
+  <div class="panel-heading">
+    <h1 class="panel-title">{{ project.ProjectTitle }}</h1>
+    <h5> Start date :{{ project.ProjectStartDate| date }} End date :{{ project.ProjectEndDate| date }}</h5>
+    <h5> </h5>
   </div>
+
+  <div class="panel-body">
+    <p>
+      {{ project.ProjectDescription}}
+    </p>
+
+  </div>
+
+  <div style="margin-bottom: 10px;margin-left: 10px;">
+
+
+
+    <a routerLink='/projects/{{project.ProjectId}}' class="btn btn-primary">Go to project home</a>
+  </div>
+
+
 </div>
