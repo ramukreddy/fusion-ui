@@ -1,24 +1,18 @@
-<div class="panel panel-info">
+<p-panel>
+  <p-header>
+    <div class="ui-helper-clearfix">
+      <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:5px;">{{ project.ProjectTitle }}</span>
 
-  <div class="panel-heading">
-    <h1 class="panel-title">{{ project.ProjectTitle }}</h1>
-    <h5> Start date :{{ project.ProjectStartDate| date }} End date :{{ project.ProjectEndDate| date }}</h5>
-    <h5> </h5>
-  </div>
+    </div>
+  </p-header>
+  The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved
+  son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's
+  life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind
+  and benevolent to those who give respect, but given to ruthless violence whenever anythi {{ project.ProjectDescription}}
+  <p-footer>
+    <a routerLink='/projects/{{project.ProjectId}}' icon="fa-list" class="ui-button-success">Go to project home</a>
+    <button pButton type="button" icon="fa-list" label="View" class="ui-button-success"></button>
 
-  <div class="panel-body">
-    <p>
-      {{ project.ProjectDescription}}
-    </p>
+  </p-footer>
+</p-panel>
 
-  </div>
-
-  <div style="margin-bottom: 10px;margin-left: 10px;">
-
-
-
-    <a routerLink='/projects/{{project.ProjectId}}' class="btn btn-primary">Go to project home</a>
-  </div>
-
-
-</div>

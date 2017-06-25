@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { TinyEditorComponent } from './utils/tiny-editor/tiny-editor.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CheckboxModule,SpinnerModule,PanelModule,CalendarModule,AutoCompleteModule,
+  EditorModule,SharedModule,GrowlModule,MessagesModule} from 'primeng/primeng';
 
 
 import { AppComponent } from './app.component';
@@ -26,9 +28,9 @@ import { ProjectEditComponent } from './projects/project-edit/project-edit.compo
 import { ProjectsComponent } from './projects/projects.component';
 import { ConceptsComponent } from './concepts/concepts.component';
 import { ProjectHomeComponent } from './projects/project-home/project-home.component';
-import { EditorModule } from 'primeng/primeng';
-import { SharedModule } from 'primeng/primeng';
-import {PanelModule} from 'primeng/primeng';
+import { StudentsComponent } from './students/students.component';
+import { StudentListingComponent } from './students/student-listing/student-listing.component';
+import { ConceptEditComponent } from './concepts/concept-edit/concept-edit.component';
 
 
 
@@ -49,16 +51,25 @@ import {PanelModule} from 'primeng/primeng';
     ProjectsComponent,
     ConceptsComponent,
     ProjectHomeComponent,
-    TinyEditorComponent
+    StudentsComponent,
+    StudentListingComponent,
+    ConceptEditComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     routing,
     EditorModule,
     SharedModule,
-    PanelModule
+    PanelModule,
+    CalendarModule,
+    AutoCompleteModule,
+    GrowlModule,
+    MessagesModule,
+    CheckboxModule,
+    SpinnerModule
   ],
   providers: [
     AuthGuard,

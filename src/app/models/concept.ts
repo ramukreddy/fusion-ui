@@ -1,10 +1,13 @@
-export interface Concept {
+export class Concept {
     conceptId: number;
     conceptTitle: string;
     conceptDescription: string;
     conceptType: String;
-    conceptFromDate: Date;
-    conceptToDate: Date;
-    companyId: number,
-    companyName:String
+    conceptStartDate: Date;
+    conceptEndDate: Date;
+    conceptOpenToInstitution: boolean;
+    conceptMaxParticipants: number;
+
+    companyId: number;
+    companyName: String
 }

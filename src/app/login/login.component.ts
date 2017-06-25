@@ -4,9 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../services/index';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 
 
@@ -38,12 +38,19 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
+            data => {
+                this.router.navigate([this.returnUrl]);
+            },
+            error => {
+                if (error.status == 401) {
+                    this.alertService.error("Please try again, or request your forgotten username or password.");
+
+                } else {
                     this.alertService.error(error);
-                    this.loading = false;
-                });
+
+                }
+                this.loading = false;
+                console.log(error);
+            });
     }
 }
