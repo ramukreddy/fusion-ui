@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AlertService, AuthenticationService } from '../services/index';
+import { AlertService, AuthenticationService, UserService } from '../services/index';
 
 @Component({
     selector: 'app-login',
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
+        private alertService: AlertService,private userService:UserService) { }
 
     ngOnInit() {
         // reset login status

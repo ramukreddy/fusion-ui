@@ -3,6 +3,8 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Form, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import { Concept } from "../../models";
+import { ConceptService } from "../../services/concept.service";
+import { AlertService } from "../../services";
 
 
 @Component({
@@ -14,7 +16,8 @@ export class ConceptEditComponent implements OnInit {
   id: Number;
   editMode: boolean;
   model: Concept;
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute,
+    private conceptService: ConceptService, private alertService: AlertService) { }
 
   ngOnInit() {
     this.model = new Concept();
@@ -35,6 +38,14 @@ export class ConceptEditComponent implements OnInit {
   }
 
   onSubmit() {
+    this.conceptService.create(this.model).subscribe(data => {
+
+      this.alertService.success("Your new concept has been created "),
+
+        console.log(data);
+    }, error => {
+      this.alertService.error(" unknown error " + error);
+    })
     console.log(this.model);
   }
   initForm() {

@@ -21,11 +21,14 @@ export class ProjectEditComponent implements OnInit {
     private projectService: ProjectService, private userService: UserService) { }
 
   ngOnInit() {
+    console.log("ngOnInit ");
+
     this.model = new Project();
     this.route.params
       .subscribe(
       (params: Params) => {
         this.id = +params['id'];
+        console.log("ngOnInit " + this.id);
         this.editMode = params['id'] != null;
         this.initForm();
       }
@@ -49,12 +52,13 @@ export class ProjectEditComponent implements OnInit {
   }
   initForm() {
     console.log(" is it edit mode " + this.editMode);
+    console.log(" Project ID is  " + this.id);
 
     if (this.editMode) {
-            this.projectService.getById(this.id).subscribe(
-              data=>console.log(data),
-              error=>console.log(error)
-            );
+      this.projectService.getById(this.id).subscribe(
+        data => console.log(data),
+        error => console.log(error)
+      );
 
     } else {
       // this.model.ProjectTitle = "";

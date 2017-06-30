@@ -4,20 +4,25 @@ import 'rxjs/add/operator/map'
 
 import { Project } from '../models/project';
 import { environment } from '../../environments/environment';
+import { Observable } from "rxjs/Observable";
 
 
 @Injectable()
 export class ProjectService {
-    apiUrl = environment.apiUrl+'/api/projects';
-  // apiUrl = "https://s3.amazonaws.com/praximlearning/projects.json";
+    apiUrl = environment.apiUrl + '/api/projects';
+    // apiUrl = "https://s3.amazonaws.com/praximlearning/projects.json";
     constructor(private http: Http) { }
 
-    getAllByUserId(userId : Number) {
-        return this.http.get(this.apiUrl+"/user/"+userId).map((response: Response) => response.json());
+    getAllByUserId(userId: Number): Observable<Project[]> {
+        return this.http.get(this.apiUrl + "/user/" + userId).map(function (res) {
+            var data = res.json();
+            console.log(data);
+            return data;
+        })
     }
 
     getById(id: Number) {
-        return this.http.get(this.apiUrl+ id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get(this.apiUrl + id, this.jwt()).map((response: Response) => response.json());
     }
 
     create(project: Project) {
@@ -42,4 +47,8 @@ export class ProjectService {
             return new RequestOptions({ headers: headers });
         }
     }
+
+
+
+
 }

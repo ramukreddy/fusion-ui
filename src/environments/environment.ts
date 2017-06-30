@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://test-praxim.us-east-1.elasticbeanstalk.com'
+ // apiUrl: 'http://test-praxim.us-east-1.elasticbeanstalk.com'
+  apiUrl: 'http://localhost:8081'
 
 };

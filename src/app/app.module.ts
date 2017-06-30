@@ -3,8 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {CheckboxModule,SpinnerModule,PanelModule,CalendarModule,AutoCompleteModule,
-  EditorModule,SharedModule,GrowlModule,MessagesModule} from 'primeng/primeng';
+import {
+  CheckboxModule, SpinnerModule, PanelModule, CalendarModule, AutoCompleteModule,
+  EditorModule, SharedModule, GrowlModule, MessagesModule,
+  ConfirmDialogModule, ConfirmationService
+} from 'primeng/primeng';
 
 
 import { AppComponent } from './app.component';
@@ -31,6 +34,9 @@ import { ProjectHomeComponent } from './projects/project-home/project-home.compo
 import { StudentsComponent } from './students/students.component';
 import { StudentListingComponent } from './students/student-listing/student-listing.component';
 import { ConceptEditComponent } from './concepts/concept-edit/concept-edit.component';
+import { ConceptService } from './services/concept.service';
+import { JwtService } from "./utils/jwt.service";
+
 
 
 
@@ -69,14 +75,19 @@ import { ConceptEditComponent } from './concepts/concept-edit/concept-edit.compo
     GrowlModule,
     MessagesModule,
     CheckboxModule,
-    SpinnerModule
+    SpinnerModule,
+    ConfirmDialogModule,
+
   ],
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
     UserService,
-    ProjectService
+    ProjectService,
+    ConceptService,
+    JwtService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

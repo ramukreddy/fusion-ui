@@ -1,13 +1,16 @@
-export class Concept {
-    conceptId: number;
-    conceptTitle: string;
-    conceptDescription: string;
-    conceptType: String;
-    conceptStartDate: Date;
-    conceptEndDate: Date;
-    conceptOpenToInstitution: boolean;
-    conceptMaxParticipants: number;
+import { Company,User } from "../models";
 
-    companyId: number;
-    companyName: String
+export class Concept {
+    ConceptId: number;
+    ConceptTitle: string;
+    ConceptDescription: string;
+    conceptType: String;
+    ConceptFromDate: Date;
+    ConceptToDate: Date;
+    ConceptOpenToInstitution: boolean;
+    ConceptOpenToAnyLocation: number;
+
+    company:Company;
+    user:User;
+   
 }

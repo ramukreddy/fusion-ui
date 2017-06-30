@@ -1,22 +1,45 @@
-<div class="col-md-6 col-md-offset-3">
-    <h2>Please sign in</h2>
-        <alert></alert>
+<div class="col-md-8 col-md-offset-3">
+    <p-panel header="Login">
 
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="username">Email address</label>
-            <input type="email" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required email="true"/>
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Valid Email is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-        </div>
-        <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Login</button>
-            <img *ngIf="loading" src="" />
-           <a [routerLink]="['/register']" class="btn btn-link">Register</a>
-        </div>
-    </form>
+        <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+
+                <div class="ui-grid-col-4" style="text-align:center;">
+                    Email address
+                </div>
+                <div class="ui-grid-col-8">
+                    <input type="email" placeholder="Email required" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required email="true"
+                    />
+                </div>
+                <div class="ui-grid-col-4">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !username.valid">
+                        <i class="fa fa-close"></i> Valid Email is required
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+
+                <div class="ui-grid-col-4" style="text-align:center;">
+                    Password
+                </div>
+                <div class="ui-grid-col-8">
+                    <input type="password" placeholder="Password required" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required /> 
+                </div>
+                <div class="ui-grid-col-4">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !password.valid">
+                        <i class="fa fa-close"></i> Password is required
+                    </div>
+                </div>
+            </div>
+
+ <div class="ui-grid-row">
+                <div class="ui-grid-col-4"> &nbsp; </div>
+                <div class="ui-grid-col-8" style="text-align:center;">
+                <button [disabled]="loading" class="btn btn-primary">Login</button>
+                <img *ngIf="loading" src="" />
+                <a [routerLink]="['/register']" class="btn btn-link">Register</a>                </div>
+            </div>
+           
+        </form>
+    </p-panel>
 </div>

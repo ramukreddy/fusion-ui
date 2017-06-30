@@ -1,3 +1,5 @@
+
+import {Company} from './index'
 export class User {
     userId: number;
     email: string;
@@ -6,5 +8,8 @@ export class User {
     lastName: string;
     constructor (userIdentifucation:number){
         this.userId=userIdentifucation;
-    }
+    };
+   
+    company:Company;
+    
 }

@@ -1,3 +1,19 @@
-<p>
-  concept-card works!
-</p>
+<div style="margin-top:10px;">
+  <p-panel>
+    <p-header>
+      <div class="ui-helper-clearfix">
+        <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:5px;">{{ concept.ConceptTitle }}</span>
+        <span class="ui-panel-title pull-right"> Concept Type : Basic</span>
+      </div>
+    </p-header>
+    <div>
+      {{ concept.ConceptDescription}}
+
+    </div>
+    <div style="margin-top:10px;">
+      <a pButton type="button" label="Register" (click)="RegisterToConcept(concept.ConceptId)" class="ui-button-primary"></a>
+      <a pButton type="button" label="Go to concept home" routerLink='/concepts/{{concept.ConceptId}}' class="ui-button-info"></a>
+    </div>
+
+  </p-panel>
+</div>

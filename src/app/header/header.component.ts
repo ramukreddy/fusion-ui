@@ -9,14 +9,17 @@ import { Router } from "@angular/router";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  currentUser: User;
+  model: User;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router, 
+  private userService: UserService) { }
 
   ngOnInit() {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser')).user[0];
+        console.log("header model on init");;
 
-
+    this.model = this.userService.getLocalUser();
+    console.log("header model :");
+    console.log(this.model);
   }
 
   onLogout() {
