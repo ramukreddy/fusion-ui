@@ -1,5 +1,4 @@
 
-import {Company} from './index'
 export class User {
     userId: number;
     email: string;
@@ -10,6 +9,5 @@ export class User {
         this.userId=userIdentifucation;
     };
    
-    company:Company;
     
 }

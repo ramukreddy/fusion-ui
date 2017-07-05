@@ -1,3 +1,84 @@
-<p>
-  student-listing works!
-</p>
+<div class="alert alert-danger" *ngIf="error">
+  {{ error }}</div>
+<button type="button" (click)="showDialog() " class="btn btn-primary btn-lg" pButton icon="fa-external-link-square" style="margin-bottom:5px;" label="Invite new student "></button>
+
+
+<p-dataScroller [value]="students" [rows]="10" [buffer]="0.4">
+  <p-header>
+    Scroll Down to to Load More
+  </p-header>
+  <ng-template let-student pTemplate="item">
+    <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5;">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-3" style="text-align:center"><i class="fa fa-search" (click)="selectCar(student)" style="cursor:pointer;float:left;margin-top:20px"></i></div>
+        <div class="ui-grid-col-9">
+          <div class="ui-grid ui-grid-responsive ui-fluid">
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2">Name: </div>
+              <div class="ui-grid-col-10">{{student.FirstName}} , {{student.LastName}}</div>
+            </div>
+            <div class="ui-grid-row">
+              <div class="ui-grid-col-2">email: </div>
+              <div class="ui-grid-col-10">{{student.email}}</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-dataScroller>
+
+<form name="form" (ngSubmit)="f.form.valid && invite(f)" #f="ngForm" novalidate>
+
+  <p-dialog header="Invite student" [(visible)]="display" modal="modal" width="500" [responsive]="true">
+    <p-messages [(value)]="msgs"></p-messages>
+
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+      <div class="ui-grid-col-2">
+        First Name
+      </div>
+      <div class="ui-grid-col-6">
+        <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
+      </div>
+      <div class="ui-grid-col-4">
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !firstName.valid">
+          <i class="fa fa-close"></i> Firstname is required
+        </div>
+      </div>
+    </div>
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+      <div class="ui-grid-col-2">
+        Last Name
+      </div>
+      <div class="ui-grid-col-6">
+        <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
+      </div>
+      <div class="ui-grid-col-4">
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !lastName.valid">
+          <i class="fa fa-close"></i> Lastname is required
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+      <div class="ui-grid-col-2">
+        Email
+      </div>
+      <div class="ui-grid-col-6">
+        <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required email="true" />
+
+      </div>
+
+      <div class="ui-grid-col-4">
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !email.valid">
+          <i class="fa fa-close"></i> Email is required
+        </div>
+      </div>
+    </div>
+    <p-footer>
+      <button [disabled]="loading" class="btn btn-primary btn-lg">Invite</button>
+      <button [disabled]="loading" class="btn btn-primary btn-lg" (click)="display=false">Cancel</button>
+    </p-footer>
+  </p-dialog>
+</form>

@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
                 console.log("ngOnInit " + params['id']);
             }
             );
-         this.inviteeToken = 'c23ef382-f40f-421b-b9eb-139d17b7b859';
+        // this.inviteeToken = 'c23ef382-f40f-421b-b9eb-139d17b7b859';
         if (this.inviteeToken) {
             this.userService.getByInviteeToken(this.inviteeToken).subscribe(data => {
                 this.model = new User(data[0].UserId)
@@ -44,8 +44,8 @@ export class RegisterComponent implements OnInit {
                 this.model.firstName = data[0].FirstName;
                 this.model.lastName = data[0].LastName;
             }, error => {
-                    console.log(error);
-                     this.alertService.error("Invalid token");
+                console.log(error);
+                this.alertService.error("Invalid token");
 
             });
         }
@@ -60,13 +60,13 @@ export class RegisterComponent implements OnInit {
                 data => {
                     //this.msgs.push({ severity: 'info', summary: 'Success', detail: 'Registration successful' });
 
-                     this.alertService.success('Registration successful', true);
+                    this.alertService.success('Registration successful', true);
                     this.router.navigate(['/login']);
                 },
                 error => {
                     //this.msgs.push({ severity: 'error', summary: 'Error', detail: error });
 
-                     this.alertService.error(error);
+                    this.alertService.error(error);
                     this.loading = false;
                 });
         } else {
@@ -87,5 +87,6 @@ export class RegisterComponent implements OnInit {
         }
 
     }
+  
 
 }

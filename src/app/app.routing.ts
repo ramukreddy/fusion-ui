@@ -23,10 +23,9 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   {
-    path: 'register', component: RegisterComponent, children: [{
-      path: ':id', component: RegisterComponent
+    path: 'register/:id', component: RegisterComponent
 
-    }]
+
   },
   {
     path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard], children: [
@@ -46,7 +45,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'students', component: StudentsComponent, children: [
-      { path: '', component: StudentListingComponent }
+      { path: '', component: StudentListingComponent },
+      { path: 'invite', component: RegisterComponent }
 
     ]
   },

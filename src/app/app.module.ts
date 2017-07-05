@@ -4,9 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  CheckboxModule, SpinnerModule, PanelModule, CalendarModule, AutoCompleteModule,
+  CheckboxModule, SpinnerModule, PanelModule, CalendarModule,
+  AutoCompleteModule,Header,Footer,DialogModule,
   EditorModule, SharedModule, GrowlModule, MessagesModule,
-  ConfirmDialogModule, ConfirmationService
+  ConfirmDialogModule, ConfirmationService, DropdownModule,
+  DataScrollerModule
 } from 'primeng/primeng';
 
 
@@ -36,6 +38,7 @@ import { StudentListingComponent } from './students/student-listing/student-list
 import { ConceptEditComponent } from './concepts/concept-edit/concept-edit.component';
 import { ConceptService } from './services/concept.service';
 import { JwtService } from "./utils/jwt.service";
+import { StudentCohortService } from "./services/student-cohort.service";
 
 
 
@@ -77,6 +80,9 @@ import { JwtService } from "./utils/jwt.service";
     CheckboxModule,
     SpinnerModule,
     ConfirmDialogModule,
+    DropdownModule,
+    DataScrollerModule,
+    DialogModule
 
   ],
   providers: [
@@ -87,7 +93,8 @@ import { JwtService } from "./utils/jwt.service";
     ProjectService,
     ConceptService,
     JwtService,
-    ConfirmationService
+    ConfirmationService,
+    StudentCohortService
   ],
   bootstrap: [AppComponent]
 })

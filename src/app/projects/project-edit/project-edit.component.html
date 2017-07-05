@@ -52,6 +52,21 @@
 
       <div class="row">
         <div class="col-xs-12">
+          <div class="form-group">
+            <label for="students">Select students</label>
+
+            <p-autoComplete name="students" #students="ngModel"  [(ngModel)]="model.students" [suggestions]="filteredStudentsMultiple" (completeMethod)="filterStudentMultiple($event)"
+              styleClass="wid100" [minLength]="1" placeholder="Students" field="name" [multiple]="true">
+            </p-autoComplete>
+            <ul>
+              <li *ngFor="let student of model.students">{{student.firstName}},{{student.lastName}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
           <button type="submit" class="btn btn-success" [disabled]="!f.valid">Save</button>
           <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
         </div>

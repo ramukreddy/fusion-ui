@@ -16,7 +16,6 @@ export class ConceptListingComponent implements OnInit {
     private conceptService: ConceptService, private alertService: AlertService) { }
 
   ngOnInit() {
-
     this.route.params
       .subscribe(
       (params: Params) => {
@@ -37,7 +36,10 @@ export class ConceptListingComponent implements OnInit {
             case "available":
               this.conceptService.getAllConcepts().subscribe(data => {
                 this.concepts = data;
-                console.log(this.concepts);
+                if (this.concepts.length < 1) {
+                  this.alertService.success("You do not have any concepts available this time");
+
+                }
               }, error => {
                 this.alertService.error(error);
               });
@@ -46,7 +48,7 @@ export class ConceptListingComponent implements OnInit {
               this.conceptService.getOpenConcepts().subscribe(data => {
                 this.concepts = new Array<Concept>();
                 if (this.concepts && this.concepts.length < 1) {
-                  this.alertService.success("You do not have any concept available this time ");
+                  this.alertService.success("You do not have any concepts available this time ");
 
                 }
                 console.log(this.concepts);
@@ -55,7 +57,7 @@ export class ConceptListingComponent implements OnInit {
               });
               break;
             default:
-              this.alertService.success("You do not have any concept available this time ");
+              this.alertService.success("You do not have any concepts available this time ");
               break;
 
           }
@@ -63,14 +65,5 @@ export class ConceptListingComponent implements OnInit {
         }
       }
       );
-
-    console.log(" on ng init of concept module")
-    console.log(" type " + this.type);
-
-
   }
-  loadConcepts(event) {
-    console.log(event);
-  }
-
 }
