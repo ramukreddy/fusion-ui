@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-12">
     
-    <a routerLink='/projects/new' class="btn btn-success">Create New Project</a>
+    <a routerLink='/projects/new' class="btn btn-success" *ngIf="loggedInUser.isTeacher()">Create New Project</a>
     <router-outlet></router-outlet>
   </div>
 </div>

@@ -47,7 +47,7 @@ export class ProjectEditComponent implements OnInit {
   onSubmit() {
     let localUser = this.userService.getLocalUser();
     console.log(this.userService.getLocalUser());
-    this.model.user = new User(localUser.UserId);
+    this.model.user = new User(localUser.userId);
     console.log(this.model.user);
 
     this.projectService.create(this.model).subscribe(
@@ -60,7 +60,6 @@ export class ProjectEditComponent implements OnInit {
 
   }
   initForm() {
-
 
     if (this.editMode) {
       this.projectService.getById(this.id).subscribe(

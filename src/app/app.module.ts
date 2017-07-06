@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   CheckboxModule, SpinnerModule, PanelModule, CalendarModule,
-  AutoCompleteModule,Header,Footer,DialogModule,
+  AutoCompleteModule,Header,Footer,DialogModule,StepsModule,
   EditorModule, SharedModule, GrowlModule, MessagesModule,
   ConfirmDialogModule, ConfirmationService, DropdownModule,
   DataScrollerModule
@@ -82,7 +82,8 @@ import { StudentCohortService } from "./services/student-cohort.service";
     ConfirmDialogModule,
     DropdownModule,
     DataScrollerModule,
-    DialogModule
+    DialogModule,
+    StepsModule
 
   ],
   providers: [

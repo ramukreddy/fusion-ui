@@ -41,8 +41,8 @@ export class RegisterComponent implements OnInit {
             this.userService.getByInviteeToken(this.inviteeToken).subscribe(data => {
                 this.model = new User(data[0].UserId)
                 this.model.email = data[0].UserName;
-                this.model.firstName = data[0].FirstName;
-                this.model.lastName = data[0].LastName;
+                this.model.FirstName = data[0].FirstName;
+                this.model.LastName = data[0].LastName;
             }, error => {
                 console.log(error);
                 this.alertService.error("Invalid token");

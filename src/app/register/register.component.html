@@ -9,10 +9,10 @@
                     First Name
                 </div>
                 <div class="ui-grid-col-6">
-                    <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
+                    <input type="text" class="form-control" name="FirstName" [(ngModel)]="model.FirstName" #FirstName="ngModel" required />
                 </div>
                 <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !firstName.valid">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !FirstName.valid">
                         <i class="fa fa-close"></i> Firstname is required
                     </div>
                 </div>
@@ -22,10 +22,10 @@
                     Last Name
                 </div>
                 <div class="ui-grid-col-6">
-                    <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
+                    <input type="text" class="form-control" name="LastName" [(ngModel)]="model.LastName" #LastName="ngModel" required />
                 </div>
                 <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !lastName.valid">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !LastName.valid">
                         <i class="fa fa-close"></i> Lastname is required
                     </div>
                 </div>

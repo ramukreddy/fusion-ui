@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  model: User;
+  loggedInUser: User;
 
   constructor(private authenticationService: AuthenticationService, private router: Router, 
   private userService: UserService) { }
@@ -17,9 +17,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
         console.log("header model on init");;
 
-    this.model = this.userService.getLocalUser();
+    this.loggedInUser = this.userService.getLocalUser();
     console.log("header model :");
-    console.log(this.model);
+    console.log(this.loggedInUser);
   }
 
   onLogout() {

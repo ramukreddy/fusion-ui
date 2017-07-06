@@ -17,7 +17,7 @@
         <li class="dropdown" appDropdown *ngIf="authenticationService.isAuthenticated()">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="glyphicon glyphicon-user"></span>
-            <strong>{{ model.FirstName }}</strong>
+            <strong>{{ loggedInUser.FirstName }}</strong>
             <span class="glyphicon glyphicon-chevron-down"></span>
           </a>
           <ul class="dropdown-menu">
@@ -30,9 +30,9 @@
                     </p>
                   </div>
                   <div class="col-lg-8">
-                    <p class="text-left"><strong>    {{ model.FirstName }} {{ model.LastName }}
+                    <p class="text-left"><strong>    {{ loggedInUser.FirstName }} {{ loggedInUser.LastName }}
 </strong></p>
-                    <p class="text-left small">{{ model.UserName }}</p>
+                    <p class="text-left small">{{ loggedInUser.UserName }}</p>
                   </div>
                 </div>
               </div>
@@ -68,7 +68,7 @@
           <li routerLinkActive="active"><a routerLink="/home">Overview</a></li>
           <li routerLinkActive="active"><a routerLink="/projects">Projects</a></li>
           <li routerLinkActive="active"><a routerLink="/concepts/my">Concepts</a></li>
-          <li routerLinkActive="active"><a routerLink="/students">Students</a></li>
+          <li routerLinkActive="active" *ngIf="loggedInUser.isTeacher()"><a routerLink="/students">Students</a></li>
         </ul>
 
 

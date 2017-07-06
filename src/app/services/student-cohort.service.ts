@@ -24,8 +24,8 @@ export class StudentCohortService {
     };
     studentCohort['teacherId'] = this.jwtService.getLocalUser().UserId;
     var studentJson = {
-      "firstName": student.firstName,
-      "lastName": student.lastName,
+      "firstName": student.FirstName,
+      "lastName": student.LastName,
       "emailId": student.email
     };
     studentCohort.students.push(studentJson);

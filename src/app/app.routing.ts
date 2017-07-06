@@ -25,7 +25,9 @@ const appRoutes: Routes = [
   {
     path: 'register/:id', component: RegisterComponent
 
-
+  },
+  {
+    path: 'register', component: RegisterComponent
   },
   {
     path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard], children: [

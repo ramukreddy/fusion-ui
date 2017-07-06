@@ -20,7 +20,7 @@ export class ProjectListingComponent implements OnInit {
   ngOnInit() {
 
     let localUser = this.userService.getLocalUser();
-    this.projectSerive.getAllByUserId(localUser.UserId).subscribe(
+    this.projectSerive.getAllByUserId(localUser.userId).subscribe(
       data => this.projects = data,
       error => this.error = error.statusText
 
