@@ -1,0 +1,38 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+
+        {{concept.ConceptTitle}}
+
+    </div>
+
+    <div class="panel-body">
+        {{concept.ConceptDescription}}
+        <hr/>
+        <div>
+            <h5> Particiapting Institutions</h5>
+        </div>
+        <ng-template [ngIf]="universities">
+
+
+            <p-accordion [multiple]="true">
+                <div *ngFor="let university of universities ">
+
+                    <p-accordionTab [selected]="true">
+                        <p-header>
+                            {{university.Name}}
+                        </p-header>
+                        <div *ngFor="let project of university.projects ">
+                            <app-project-card [project]="project"></app-project-card>
+                        </div>
+                    </p-accordionTab>
+                </div>
+            </p-accordion>
+        </ng-template>
+
+        <ng-template [ngIf]="!universities">
+            <div class="alert alert-info" role="alert">No particpants yet</div>
+
+        </ng-template>
+    </div>
+
+</div>

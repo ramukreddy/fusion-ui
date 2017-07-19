@@ -5,10 +5,10 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   CheckboxModule, SpinnerModule, PanelModule, CalendarModule,
-  AutoCompleteModule,Header,Footer,DialogModule,StepsModule,
+  AutoCompleteModule, Header, Footer, DialogModule, StepsModule,
   EditorModule, SharedModule, GrowlModule, MessagesModule,
   ConfirmDialogModule, ConfirmationService, DropdownModule,
-  DataScrollerModule
+  DataScrollerModule, TabViewModule, FieldsetModule, AccordionModule
 } from 'primeng/primeng';
 
 
@@ -29,6 +29,8 @@ import { ProjectCardComponent } from './projects/project-card/project-card.compo
 import { HeaderComponent } from './header/header.component';
 import { ConceptCardComponent } from './concepts/concept-card/concept-card.component';
 import { ConceptListingComponent } from './concepts/concept-listing/concept-listing.component';
+import { ConceptRegisteredListingComponent } from './concepts/concept-listing/concept-registered-listing.component';
+import {ConceptAvailableListingComponent} from './concepts/concept-listing/concept-available-listing.component';
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ConceptsComponent } from './concepts/concepts.component';
@@ -39,6 +41,7 @@ import { ConceptEditComponent } from './concepts/concept-edit/concept-edit.compo
 import { ConceptService } from './services/concept.service';
 import { JwtService } from "./utils/jwt.service";
 import { StudentCohortService } from "./services/student-cohort.service";
+import { ConceptHomeComponent } from './concepts/concept-home/concept-home.component';
 
 
 
@@ -56,13 +59,16 @@ import { StudentCohortService } from "./services/student-cohort.service";
     HeaderComponent,
     ConceptCardComponent,
     ConceptListingComponent,
+    ConceptRegisteredListingComponent,
+    ConceptAvailableListingComponent,
     ProjectEditComponent,
     ProjectsComponent,
     ConceptsComponent,
     ProjectHomeComponent,
     StudentsComponent,
     StudentListingComponent,
-    ConceptEditComponent
+    ConceptEditComponent,
+    ConceptHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +89,10 @@ import { StudentCohortService } from "./services/student-cohort.service";
     DropdownModule,
     DataScrollerModule,
     DialogModule,
-    StepsModule
+    StepsModule,
+    TabViewModule,
+    FieldsetModule,
+    AccordionModule
 
   ],
   providers: [

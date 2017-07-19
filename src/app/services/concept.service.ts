@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Http, Response } from "@angular/http";
-import { Concept,Student } from "../models";
+import { Concept, Student,University } from "../models";
 import { Observable } from "rxjs/Rx";
 import { JwtService } from "../utils/jwt.service";
 
@@ -10,6 +10,12 @@ export class ConceptService {
   private apiUrl = environment.apiUrl + '/api/concepts';
 
   constructor(private http: Http, private jwtService: JwtService) { }
+
+  getConceptById(id: number): Observable<Concept> {
+    return this.http.get(this.apiUrl + "/user/" + this.jwtService.getLocalUser().UserId, this.jwtService.jwt())
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
 
   getAllConcepts(): Observable<Concept[]> {
     return this.http.get(this.apiUrl + "/user/" + this.jwtService.getLocalUser().UserId, this.jwtService.jwt())
@@ -29,14 +35,20 @@ export class ConceptService {
 
   RegisterToConcept(conceptId): Observable<Concept> {
     let user = this.jwtService.getLocalUser();
-    var regConcept = '{"conceptId:"' + conceptId + ',"userId :"'+user.userId+'}';
+    var regConcept = '{"conceptId:"' + conceptId + ',"userId :"' + user.userId + '}';
     return this.http.post(this.apiUrl + "/register", regConcept, this.jwtService.jwt())
       .map(this.extractData)
       .catch(this.handleError);
 
   }
 
- 
+  getUniversitiesForConceptById(id: number): Observable<University[]> {
+    return this.http.get("http://localhost:4200/assets/projects.json", this.jwtService.jwt())
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+
   create(concept: Concept): Observable<Concept> {
     concept.user = this.jwtService.getLocalUser();
     return this.http.post(this.apiUrl, concept, this.jwtService.jwt())
@@ -44,6 +56,8 @@ export class ConceptService {
       .catch(this.handleError);
 
   }
+
+  selectedConcept = new EventEmitter<Concept>();
 
   private extractData(res: Response) {
     let body = res.json();

@@ -14,7 +14,9 @@ import { ConceptsComponent } from './concepts/concepts.component';
 import { ConceptEditComponent } from './concepts/concept-edit/concept-edit.component';
 import { StudentsComponent } from './students/students.component';
 import { StudentListingComponent } from './students/student-listing/student-listing.component';
-
+import { ConceptHomeComponent } from "./concepts/concept-home/concept-home.component";
+import { ConceptRegisteredListingComponent } from "./concepts/concept-listing/concept-registered-listing.component";
+import { ConceptAvailableListingComponent } from "./concepts/concept-listing/concept-available-listing.component";
 
 
 
@@ -32,7 +34,11 @@ const appRoutes: Routes = [
   {
     path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard], children: [
       { path: '', component: ProjectListingComponent },
-      { path: 'new', component: ProjectEditComponent },
+      {
+        path: 'new', component: ProjectEditComponent, children: [
+          { path: 'concept/:conceptId', component: ProjectEditComponent }
+        ]
+      },
       { path: ':id', component: ProjectHomeComponent },
       { path: ':id/edit', component: ProjectEditComponent }
 
@@ -40,9 +46,15 @@ const appRoutes: Routes = [
   },
   {
     path: 'concepts', component: ConceptsComponent, children: [
-      { path: ':type', component: ConceptListingComponent },
-      { path: 'new', component: ConceptEditComponent }
+      {
+        path: 'list', component: ConceptListingComponent, children: [
+          { path: 'registered', component: ConceptRegisteredListingComponent },
+          { path: 'available', component: ConceptAvailableListingComponent }
 
+        ]
+      },
+      { path: 'new', component: ConceptEditComponent },
+      { path: ':id', component: ConceptHomeComponent }
     ]
   },
   {

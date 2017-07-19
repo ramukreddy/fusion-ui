@@ -33,7 +33,7 @@ export class ConceptEditComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['../'], { relativeTo: this.route });
+    this.router.navigate(['../list/available'], { relativeTo: this.route });
 
   }
 

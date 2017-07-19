@@ -11,11 +11,30 @@
       <a class="navbar-brand navbar-center" href="#">PRAXIM LEARNING</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
+      <ng-template [ngIf]="authenticationService.isAuthenticated()">
+
+        <ul class="nav navbar-nav">
+
+          <li routerLinkActive="active"><a routerLink="/projects">Projects</a></li>
+          <li class="dropdown" appDropdown>
+
+            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Concepts <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li routerLinkActive="active" *ngIf="loggedInUser.isTeacher()"><a routerLink="/concepts/list/registered">My Registered concepts</a></li>
+              <li routerLinkActive="active" *ngIf="loggedInUser.isTeacher()"><a routerLink="/concepts/list/available">Available concepts</a></li>
+              <li routerLinkActive="active" *ngIf="loggedInUser.isAdmin()"><a routerLink="/concepts/list/available">My Concepts</a>
+
+            </ul>
+            </li>
+
+            <li routerLinkActive="active" *ngIf="loggedInUser.isTeacher()"><a routerLink="/students">Students</a></li>
+        </ul>
+      </ng-template>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">ABOUT</a></li>
 
         <li class="dropdown" appDropdown *ngIf="authenticationService.isAuthenticated()">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <a  class="dropdown-toggle" data-toggle="dropdown">
             <span class="glyphicon glyphicon-user"></span>
             <strong>{{ loggedInUser.FirstName }}</strong>
             <span class="glyphicon glyphicon-chevron-down"></span>
@@ -59,21 +78,7 @@
 </nav>
 <div class="container-fluid">
   <div class="row">
-    <ng-template [ngIf]="authenticationService.isAuthenticated()">
 
-      <div class="col-sm-3 col-md-2 sidebar">
-
-        <ul class="nav nav-sidebar">
-
-          <li routerLinkActive="active"><a routerLink="/home">Overview</a></li>
-          <li routerLinkActive="active"><a routerLink="/projects">Projects</a></li>
-          <li routerLinkActive="active"><a routerLink="/concepts/my">Concepts</a></li>
-          <li routerLinkActive="active" *ngIf="loggedInUser.isTeacher()"><a routerLink="/students">Students</a></li>
-        </ul>
-
-
-      </div>
-    </ng-template>
 
   </div>
 </div>

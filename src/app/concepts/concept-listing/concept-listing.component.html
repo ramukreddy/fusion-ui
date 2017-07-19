@@ -1,24 +1,10 @@
-<div class="container">
+<div class="panel-body">
+  <div class="tab-content">
 
-  <div class="row">
-    <div class="panel with-nav-tabs panel-info">
-      <div class="panel-heading">
-        <ul class="nav nav-tabs">
-          <li routerLinkActive="active"><a routerLink="/concepts/my" data-toggle="tab">My Registered concepts</a></li>
-          <li routerLinkActive="active"><a routerLink="/concepts/available" (click)="loadConcepts($event)" data-toggle="tab">Available concepts</a></li>
-          <li routerLinkActive="active"><a routerLink="/concepts/open" data-toggle="tab">Open concepts</a></li>
-          <li routerLinkActive="active"><a routerLink="/concepts/expired" data-toggle="tab">Closed concepts</a></li>
-        </ul>
-      </div>
-      <div class="panel-body">
-        <div class="tab-content">
-          <alert></alert>
-
-          <div *ngFor="let concept of concepts ">
-            <app-concept-card [concept]="concept"></app-concept-card>
-          </div>
-        </div>
-      </div>
+    <div *ngFor="let concept of concepts ">
+      <app-concept-card [concept]="concept"></app-concept-card>
     </div>
+    <router-outlet></router-outlet>
+
   </div>
 </div>

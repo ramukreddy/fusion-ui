@@ -11,7 +11,8 @@
 
     </div>
     <div style="margin-top:10px;">
-      <a pButton type="button" label="Register" (click)="RegisterToConcept(concept.ConceptId)" class="ui-button-primary"></a>
+
+      <a pButton type="button" label="Register" (click)="RegisterToConcept(concept)" class="ui-button-primary" *ngIf="loggedInUser.isTeacher()"></a>
       <a pButton type="button" label="Go to concept home" routerLink='/concepts/{{concept.ConceptId}}' class="ui-button-info"></a>
     </div>
 

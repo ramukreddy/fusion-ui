@@ -22,7 +22,35 @@ export class ProjectService {
     }
 
     getById(id: Number) {
-        return this.http.get(this.apiUrl + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get(this.apiUrl + "/" + id, this.jwt())
+            .map((response: Response) => {
+                let resJson = response.json();
+                console.log(resJson);
+                if (resJson) {
+                    let resProject = resJson[0];
+                    let project: Project = new Project();
+                    project.ProjectId = resProject.ProjectId;
+                    project.title = resProject.ProjectTitle;
+                    project.description = resProject.ProjectDescription;
+                    project.startDate = new Date(resProject.ProjectStartDate);
+                    project.endDate = new Date(resProject.ProjectEndDate);
+                    return project;
+
+                }
+            })
+            .catch((error: Response) => {
+                let errMsg: string;
+                if (error instanceof Response) {
+                    const body = error.json() || '';
+                    const err = body.error || JSON.stringify(body);
+                    errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+                } else {
+                    console.log("something went wrong " + error);
+                    // errMsg = error.message ? error.message : error.toString();
+                }
+                return Observable.throw(errMsg);
+            }
+            );
     }
 
     create(project: Project) {

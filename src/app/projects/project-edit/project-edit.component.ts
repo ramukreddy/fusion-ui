@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Form, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { SelectItem } from 'primeng/primeng';
 import { AlertService } from "../../services/index";
-import { Project, User } from "../../models/index";
+import { Project, User, Concept } from "../../models/index";
 import { ProjectService, UserService, StudentCohortService } from "../../services/index";
 import { ConceptService } from "../../services/concept.service";
 
@@ -22,6 +22,7 @@ export class ProjectEditComponent implements OnInit {
   filteredStudentsMultiple: any[];
 
 
+
   constructor(private router: Router, private route: ActivatedRoute,
     private alertService: AlertService,
     private projectService: ProjectService,
@@ -30,6 +31,7 @@ export class ProjectEditComponent implements OnInit {
     private studentCohortService: StudentCohortService) { }
 
   ngOnInit() {
+    console.log("i am in init");
 
 
     this.model = new Project();
@@ -37,11 +39,21 @@ export class ProjectEditComponent implements OnInit {
       .subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        console.log("ngOnInit " + this.id);
+        console.log("ngOnInit id = " + this.id + " or conceptId " + this.selectedConceptId);
         this.editMode = params['id'] != null;
-        this.initForm();
+        this.selectedConceptId = params['conceptId'];
       }
       );
+
+    if (this.editMode) {
+      this.editProject();
+
+    }
+    if (this.selectedConceptId) {
+
+    }
+
+
   }
 
   onSubmit() {
@@ -49,29 +61,37 @@ export class ProjectEditComponent implements OnInit {
     console.log(this.userService.getLocalUser());
     this.model.user = new User(localUser.userId);
     console.log(this.model.user);
-
-    this.projectService.create(this.model).subscribe(
+    if(this.model.ProjectId){
+      this.projectService.update(this.model).subscribe(
       data => this.alertService.success("Your new project has been created "),
       error => this.alertService.error(error));
+    }else{
+      this.projectService.create(this.model).subscribe(
+      data => this.alertService.success("Your new project has been created "),
+      error => this.alertService.error(error));
+    }
+    
 
   }
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
 
   }
-  initForm() {
+  editProject() {
+    console.log(this.editMode);
 
-    if (this.editMode) {
-      this.projectService.getById(this.id).subscribe(
-        data => console.log(data),
-        error => console.log(error)
-      );
+    this.projectService.getById(this.id).subscribe(
+      data => {this.model = data;},
+      error => console.log(error)
+    );
+  }
+  initForConcept() {
 
-    } else {
-      // this.model.ProjectTitle = "";
-      // this.model.ProjectDescription = "";
-    }
+    this.conceptService.selectedConcept.subscribe((concept: Concept) => {
+      console.log(concept);
+      this.model.title = concept.ConceptTitle;
 
+    });
   }
 
   filterStudentMultiple(event) {

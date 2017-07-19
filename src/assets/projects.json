@@ -1,0 +1,54 @@
+[{
+    "University": 1,
+    "Name": "UMUC",
+    "projects": [
+        {
+            "ProjectId": 2,
+            "ProjectTitle": "asdasd",
+            "ProjectDescription": "asdsada",
+            "ProjectStartDate": "2017-06-20T04:00:00.000Z",
+            "ProjectEndDate": "2017-06-30T04:00:00.000Z",
+            "CreatedBy": 5
+        },
+        {
+            "ProjectId": 3,
+            "ProjectTitle": "This is another one ",
+            "ProjectDescription": "i am writing some description ",
+            "ProjectStartDate": "2017-06-22T04:00:00.000Z",
+            "ProjectEndDate": "2017-06-30T04:00:00.000Z",
+            "CreatedBy": 5
+        },
+        {
+            "ProjectId": 4,
+            "ProjectTitle": "Rama ",
+            "ProjectDescription": "Rama ",
+            "ProjectStartDate": "2017-06-22T04:00:00.000Z",
+            "ProjectEndDate": "2017-06-15T04:00:00.000Z",
+            "CreatedBy": 5
+        },
+        {
+            "ProjectId": 5,
+            "ProjectTitle": "New form again ",
+            "ProjectDescription": "new description",
+            "ProjectStartDate": "2017-06-28T04:00:00.000Z",
+            "ProjectEndDate": "2017-06-23T04:00:00.000Z",
+            "CreatedBy": 5
+        },
+        {
+            "ProjectId": 6,
+            "ProjectTitle": "Editor check",
+            "ProjectDescription": "<p>This is Editor  </p>",
+            "ProjectStartDate": "2017-06-16T04:00:00.000Z",
+            "ProjectEndDate": "2017-06-02T04:00:00.000Z",
+            "CreatedBy": 5
+        },
+        {
+            "ProjectId": 7,
+            "ProjectTitle": "New Calendar picker",
+            "ProjectDescription": "<p>New Calendar picker</p>",
+            "ProjectStartDate": "2017-06-23T08:00:00.000Z",
+            "ProjectEndDate": "2017-06-30T08:00:00.000Z",
+            "CreatedBy": 5
+        }
+    ]
+}]

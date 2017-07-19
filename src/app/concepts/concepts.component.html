@@ -2,7 +2,18 @@
   <app-header></app-header>
 </div>
 <div class="row" class="concepts">
-  <a routerLink='/concepts/new' class="btn btn-success" style="margin-bottom:10px;">Create New Concept</a>
+  <a routerLink='/concepts/new' class="btn btn-success" style="margin-bottom:10px;" *ngIf="loggedInUser.isAdmin()">Create New Concept</a>
   <p-confirmDialog></p-confirmDialog>
-  <router-outlet></router-outlet>
+  <div class="panel with-nav-tabs panel-info">
+    <alert></alert>
+
+    <div class="panel-heading">
+      <ul class="nav nav-tabs">
+        <li routerLinkActive="active" *ngIf="loggedInUser.isTeacher()"><a routerLink="/concepts/list/registered" data-toggle="tab">My Registered concepts</a></li>
+        <li routerLinkActive="active" *ngIf="loggedInUser.isTeacher()"><a routerLink="/concepts/list/available" data-toggle="tab">Available concepts</a></li>
+        <li routerLinkActive="active" *ngIf="loggedInUser.isAdmin()"><a routerLink="/concepts/list/available" data-toggle="tab">My concepts</a></li>
+      </ul>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
 </div>

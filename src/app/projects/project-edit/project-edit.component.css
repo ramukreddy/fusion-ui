@@ -1,3 +1,19 @@
-.wid100{
-    width: 100px;
+.wid200{
+    width: 200px;
 }
+
+
+
+.ui-autocomplete-input-token input {
+    border: 0 none;
+    width: 100em;
+    outline: medium none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
