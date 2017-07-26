@@ -1,7 +1,11 @@
+<app-header>
+</app-header>
 <div class="col-md-8 col-md-offset-3">
 
-    <p-panel header="Register">
-       
+    <p-panel >
+       <p-header>
+           Register
+       </p-header>
         <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
             <alert></alert>
             <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">

@@ -1,10 +1,10 @@
 <div class="container">
   <app-header></app-header>
-</div>
 <div class="row">
   <div class="col-md-12">
     
     <a routerLink='/projects/new' class="btn btn-success" *ngIf="loggedInUser.isTeacher()">Create New Project</a>
     <router-outlet></router-outlet>
   </div>
+</div>
 </div>

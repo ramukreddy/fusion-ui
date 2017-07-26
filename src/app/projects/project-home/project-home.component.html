@@ -1,47 +1,72 @@
-<div class="panel panel-primary" style="margin-top:10px">
+<div class="container">
+  <div class="panel panel-primary" style="margin-top:10px">
 
-  <div class="panel-heading">Project Title</div>
+    <div class="panel-heading">
+      <h3>Project Title</h3>
 
+    </div>
 
-</div>
-
-<div class="panel-body">
-
-  <div class="steps-custom ui-steps ui-widget ui-helper-clearfix ui-steps-readonly">
-    <ul role="tablist">
-      <!---->
-      <li class="ui-steps-item ui-state-highlight">
-        <!---->
-        <a class="ui-menuitem-link" href="#">
+    <div class="panel-body">
+      <div class="row">
+        <h4>Project status</h4>
+      </div>
+      <div class="row steps-custom ui-steps ui-widget ui-helper-clearfix ui-steps-readonly">
+        <ul role="tablist">
+          <!---->
+          <li class="ui-steps-item ui-state-highlight">
+            <!---->
+            <a class="ui-menuitem-link" href="#">
           <span class="ui-steps-number">1</span>
           <span class="ui-steps-title">Created</span>
         </a>
-        <!---->
-      </li>
-      <li class="ui-steps-item ui-state-highlight">
-        <!---->
-        <a class="ui-menuitem-link" href="#">
+            <!---->
+          </li>
+          <li class="ui-steps-item ui-state-highlight">
+            <!---->
+            <a class="ui-menuitem-link" href="#">
           <span class="ui-steps-number">2</span>
           <span class="ui-steps-title">In Progress</span>
         </a>
-        <!---->
-      </li>
-      <li class="ui-steps-item ui-state-default ui-state-disabled">
-        <!---->
-        <a class="ui-menuitem-link" href="#">
+            <!---->
+          </li>
+          <li class="ui-steps-item ui-state-default ui-state-disabled">
+            <!---->
+            <a class="ui-menuitem-link" href="#">
           <span class="ui-steps-number">3</span>
           <span class="ui-steps-title">Review</span>
         </a>
-        <!---->
-      </li>
-      <li class="ui-steps-item ui-state-default ui-state-disabled">
-        <!---->
-        <a class="ui-menuitem-link" href="#">
+            <!---->
+          </li>
+          <li class="ui-steps-item ui-state-default ui-state-disabled">
+            <!---->
+            <a class="ui-menuitem-link" href="#">
           <span class="ui-steps-number">4</span>
           <span class="ui-steps-title">Submitted</span>
         </a>
-        <!---->
-      </li>
-    </ul>
+            <!---->
+          </li>
+        </ul>
+      </div>
+
+      <div class="row" style="margin-top:10px;">
+
+        <div class="col-md-8">
+          <p-accordion>
+            <p-accordionTab header="Project description ">
+              Project description
+            </p-accordionTab>
+
+          </p-accordion>
+        </div>
+        <div class="col-md-4">
+          <h4> Team Memebers</h4>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div>
+    <app-project-timeline></app-project-timeline>
   </div>
 </div>

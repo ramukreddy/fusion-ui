@@ -1,15 +1,18 @@
-<div class="col-md-8 col-md-offset-3">
-    <p-panel header="Login">
+<app-header>
+</app-header>
+<div class="col-md-7 col-md-offset-3">
+    <div class="panel panel-success">
+        <div class="panel-heading">Member Login</div>
 
         <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 5px">
 
                 <div class="ui-grid-col-4" style="text-align:center;">
                     Email address
                 </div>
                 <div class="ui-grid-col-8">
-                    <input type="email" placeholder="Email required" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required email="true"
-                    />
+                    <input type="email" placeholder="Email required" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel"
+                        required email="true" />
                 </div>
                 <div class="ui-grid-col-4">
                     <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !username.valid">
@@ -17,13 +20,14 @@
                     </div>
                 </div>
             </div>
-            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 5px">
 
                 <div class="ui-grid-col-4" style="text-align:center;">
                     Password
                 </div>
                 <div class="ui-grid-col-8">
-                    <input type="password" placeholder="Password required" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required /> 
+                    <input type="password" placeholder="Password required" class="form-control" name="password" [(ngModel)]="model.password"
+                        #password="ngModel" required />
                 </div>
                 <div class="ui-grid-col-4">
                     <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !password.valid">
@@ -31,15 +35,32 @@
                     </div>
                 </div>
             </div>
-
- <div class="ui-grid-row">
-                <div class="ui-grid-col-4"> &nbsp; </div>
-                <div class="ui-grid-col-8" style="text-align:center;">
-                <button [disabled]="loading" class="btn btn-primary">Login</button>
-                <img *ngIf="loading" src="" />
-                <a [routerLink]="['/register']" class="btn btn-link">Register</a>                </div>
+             <div class="ui-grid-row" >
+                 <div class="ui-grid-col-4" style="text-align:center;">
+                    &nbsp;
+                </div>
+                <div class="ui-grid-col-8">
+                <a [routerLink]="['/register']">Forgot password</a> 
+                </div>
             </div>
-           
+            <div class="ui-grid-row" style="margin-top:5px;">
+                 <div class="ui-grid-col-2" style="text-align:center;">
+                    &nbsp;
+                </div>
+                <div class="ui-grid-col-8">
+
+                    <button [disabled]="loading" class="btn btn-primary btn-lg btn-block">Login</button>
+                </div>
+            </div>
+            <div class="ui-grid-row" style="margin-top:5px;">
+                 <div class="ui-grid-col-4" style="text-align:center;">
+                    &nbsp;
+                </div>
+                <div class="ui-grid-col-6">
+                <a [routerLink]="['/register']" >Create new accout</a> 
+                </div>
+            </div>
+
         </form>
-    </p-panel>
+    </div>
 </div>

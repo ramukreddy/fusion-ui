@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Form, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { SelectItem } from 'primeng/primeng';
@@ -11,7 +11,9 @@ import { ConceptService } from "../../services/concept.service";
 @Component({
   selector: 'app-project-edit',
   templateUrl: './project-edit.component.html',
-  styleUrls: ['./project-edit.component.css']
+  styleUrls: ['./project-edit.component.css'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class ProjectEditComponent implements OnInit {
   id: Number;
@@ -20,6 +22,7 @@ export class ProjectEditComponent implements OnInit {
   concepts: SelectItem[];
   selectedConceptId: number;
   filteredStudentsMultiple: any[];
+  concept: Concept;
 
 
 
@@ -39,9 +42,10 @@ export class ProjectEditComponent implements OnInit {
       .subscribe(
       (params: Params) => {
         this.id = +params['id'];
+        this.selectedConceptId = params['conceptId'];
+
         console.log("ngOnInit id = " + this.id + " or conceptId " + this.selectedConceptId);
         this.editMode = params['id'] != null;
-        this.selectedConceptId = params['conceptId'];
       }
       );
 
@@ -50,7 +54,7 @@ export class ProjectEditComponent implements OnInit {
 
     }
     if (this.selectedConceptId) {
-
+      this.initForConcept();
     }
 
 
@@ -61,16 +65,16 @@ export class ProjectEditComponent implements OnInit {
     console.log(this.userService.getLocalUser());
     this.model.user = new User(localUser.userId);
     console.log(this.model.user);
-    if(this.model.ProjectId){
+    if (this.model.ProjectId) {
       this.projectService.update(this.model).subscribe(
-      data => this.alertService.success("Your new project has been created "),
-      error => this.alertService.error(error));
-    }else{
+        data => this.alertService.success("Your new project has been created "),
+        error => this.alertService.error(error));
+    } else {
       this.projectService.create(this.model).subscribe(
-      data => this.alertService.success("Your new project has been created "),
-      error => this.alertService.error(error));
+        data => this.alertService.success("Your new project has been created "),
+        error => this.alertService.error(error));
     }
-    
+
 
   }
   onCancel() {
@@ -81,15 +85,21 @@ export class ProjectEditComponent implements OnInit {
     console.log(this.editMode);
 
     this.projectService.getById(this.id).subscribe(
-      data => {this.model = data;},
+      data => { this.model = data; },
       error => console.log(error)
     );
   }
   initForConcept() {
 
-    this.conceptService.selectedConcept.subscribe((concept: Concept) => {
-      console.log(concept);
-      this.model.title = concept.ConceptTitle;
+    this.conceptService.getConceptById(this.selectedConceptId).then(concepts => {
+      if (concepts) {
+        this.concept = concepts[0];
+      }
+      if(this.concept){
+              this.model.title = this.concept.ConceptTitle;
+              this.model.description=this.concept.ConceptDescription;
+              this.model.registerToConceptId=this.concept.ConceptId;
+      }
 
     });
   }

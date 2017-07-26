@@ -1,4 +1,5 @@
 <div style="margin-top:10px;">
+
   <p-panel>
     <p-header>
       <div class="ui-helper-clearfix">
@@ -12,7 +13,7 @@
     </div>
     <div style="margin-top:10px;">
 
-      <a pButton type="button" label="Register" (click)="RegisterToConcept(concept)" class="ui-button-primary" *ngIf="loggedInUser.isTeacher()"></a>
+      <a pButton type="button" label="Register" (click)="RegisterToConcept(concept)" class="ui-button-primary" *ngIf="!isAlreadyRegistered && loggedInUser.isTeacher()"></a>
       <a pButton type="button" label="Go to concept home" routerLink='/concepts/{{concept.ConceptId}}' class="ui-button-info"></a>
     </div>
 

@@ -40,9 +40,12 @@ export class ConceptEditComponent implements OnInit {
   onSubmit() {
     this.conceptService.create(this.model).subscribe(data => {
 
-      this.alertService.success("Your new concept has been created "),
-
+      this.alertService.success("Your new concept has been created, will automatically redirect to your concepts  "),
         console.log(data);
+      this.model = new Concept();
+      setTimeout((router: Router) => {
+        this.router.navigate(['../list/available'], { relativeTo: this.route });
+      }, 3000);  //5s
     }, error => {
       this.alertService.error(" unknown error " + error);
     })

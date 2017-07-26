@@ -1,0 +1,15 @@
+<div class="panel panel-primary">
+  <alert></alert>
+
+  <div class="panel-heading">
+    {{header}}
+  </div>
+  <div class="panel-body">
+
+    <div *ngFor="let concept of concepts ">
+      <app-concept-card [concept]="concept"></app-concept-card>
+    </div>
+    <router-outlet></router-outlet>
+
+  </div>
+</div>

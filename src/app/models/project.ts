@@ -1,4 +1,4 @@
-import {User,Student} from './index'
+import {User,Student,Concept} from './index'
 export class Project {
     ProjectId: number;
     title: string;
@@ -7,4 +7,5 @@ export class Project {
     endDate: Date;
     user : User;
     students:Student[];
+    registerToConceptId:number;
 }

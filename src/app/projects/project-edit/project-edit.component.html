@@ -49,22 +49,28 @@
           </div>
         </div>
       </div>
+      
+      <div class="row">
+
+        <div class="col-xs-12">
 
           <div class="form-group">
             <label style="float:left;" for="students">Select students</label>
             <div>
-            <p-autoComplete [size]="200" name="students" #students="ngModel"   [(ngModel)]="model.students" 
-            [suggestions]="filteredStudentsMultiple" (completeMethod)="filterStudentMultiple($event)"
-             [minLength]="1"  placeholder="Start typing student names " field="FirstName" [multiple]="true">
-            </p-autoComplete>
+              <p-autoComplete [style]="{'width':'100%'}" name="students" #students="ngModel" [(ngModel)]="model.students" [suggestions]="filteredStudentsMultiple"
+                (completeMethod)="filterStudentMultiple($event)" [minLength]="1" placeholder="Start typing student names "
+                field="FirstName" [multiple]="true">
+              </p-autoComplete>
             </div>
+          </div>
+        </div>
       </div>
-     <div class="row">
+      <div class="row">
         <div class="col-xs-12">
           <div class="col-md-4"></div>
-           <ul class="col-md-8">
-              <li *ngFor="let student of model.students">{{student.FirstName}},{{student.LastName}}</li>
-            </ul>
+          <ul class="col-md-8">
+            <li *ngFor="let student of model.students">{{student.FirstName}},{{student.LastName}}</li>
+          </ul>
         </div>
       </div>
       <div class="row">

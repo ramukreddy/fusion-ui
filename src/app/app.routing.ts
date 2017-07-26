@@ -34,11 +34,8 @@ const appRoutes: Routes = [
   {
     path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard], children: [
       { path: '', component: ProjectListingComponent },
-      {
-        path: 'new', component: ProjectEditComponent, children: [
-          { path: 'concept/:conceptId', component: ProjectEditComponent }
-        ]
-      },
+      { path: 'new', component: ProjectEditComponent},
+      { path: 'new/concept/:conceptId', component: ProjectEditComponent },
       { path: ':id', component: ProjectHomeComponent },
       { path: ':id/edit', component: ProjectEditComponent }
 

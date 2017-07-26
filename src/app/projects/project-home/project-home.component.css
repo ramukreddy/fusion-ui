@@ -3,7 +3,8 @@
   }
         
 .ui-steps.steps-custom {
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 50px;
 }
          
 .ui-steps.steps-custom .ui-steps-item .ui-menuitem-link {

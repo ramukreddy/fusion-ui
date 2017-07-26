@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Http, Response } from "@angular/http";
-import { Concept, Student,University } from "../models";
+import { Concept, Student, University } from "../models";
 import { Observable } from "rxjs/Rx";
 import { JwtService } from "../utils/jwt.service";
 
@@ -11,9 +11,10 @@ export class ConceptService {
 
   constructor(private http: Http, private jwtService: JwtService) { }
 
-  getConceptById(id: number): Observable<Concept> {
-    return this.http.get(this.apiUrl + "/user/" + this.jwtService.getLocalUser().UserId, this.jwtService.jwt())
-      .map(this.extractData)
+  getConceptById(id: number) {
+    return this.http.get(this.apiUrl + "/"+id, this.jwtService.jwt())
+      .toPromise()
+      .then(res => <Concept[]>res.json())
       .catch(this.handleError);
   }
 
@@ -35,7 +36,11 @@ export class ConceptService {
 
   RegisterToConcept(conceptId): Observable<Concept> {
     let user = this.jwtService.getLocalUser();
-    var regConcept = '{"conceptId:"' + conceptId + ',"userId :"' + user.userId + '}';
+    var regConcept = {};
+    regConcept["conceptId"] = conceptId;
+    regConcept["userId"] = user.UserId;
+
+    //JSON.parse('{"conceptId:"' + conceptId + ',"userId:"' + user.UserId +'}');
     return this.http.post(this.apiUrl + "/register", regConcept, this.jwtService.jwt())
       .map(this.extractData)
       .catch(this.handleError);
@@ -43,7 +48,7 @@ export class ConceptService {
   }
 
   getUniversitiesForConceptById(id: number): Observable<University[]> {
-    return this.http.get("http://localhost:4200/assets/projects.json", this.jwtService.jwt())
+    return this.http.get("/assets/projects.json", this.jwtService.jwt())
       .map(this.extractData)
       .catch(this.handleError);
   }
