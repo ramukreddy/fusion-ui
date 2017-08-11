@@ -1,39 +1,46 @@
-<div style="margin-top:10px;">
-  <p-panel>
-    <p-header>
-      <div class="ui-helper-clearfix">
-        <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:5px;">{{ project.ProjectTitle }}</span>
-        <span class="ui-panel-title pull-right"> {{ project.ProjectStartDate | date }} to {{ project.ProjectEndDate | date }}</span>
+<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 
+  <div class="card">
+
+    <div class="card-header">
+      {{ project.ProjectTitle }}
+    </div>
+
+    <div class="card-block">
+      <div class="card-media-block">
+        <img src="/assets/images/logo.png" class="card-media-image">
+        <div class="card-media-description">
+          <span class="card-media-title">
+                            Project Owner : 
+                        </span>
+          <span class="card-media-text">
+        {{ project.startDate | date }} to {{ project.endDate | date }}
+                        </span>
+        </div>
       </div>
-    </p-header>
-    <div>
-      The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved
-      son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's
-      life the nature of the family business becomes clear. The business of the family is just like the head of the family,
-      kind and benevolent to those who give respect, but given to ruthless violence whenever anythi {{ project.ProjectDescription}}
+
+      <div class="card-text">
+        {{ project.ProjectDescription}}
+      </div>
     </div>
 
-    <div>
-      <p-accordion>
+    <div class="card-block">
+      <div class="card-title">
+        Team Members
+      </div>
+      <div class="card-text">
+        <div *ngFor="let student of project.students ">
+          <a class="btn btn-sm btn-link" type="button" routerLink='/projects/{{project.ProjectId}}'>{{student.FirstName}},{{student.LastName}}</a>
 
-        <p-accordionTab>
-          <p-header>
-            Team Members
-          </p-header>
-          <div *ngFor="let student of project.students ">
-
-          </div>
-          <ng-template [ngIf]="!project.students">
-            Members not assigned yet!
-          </ng-template>
-        </p-accordionTab>
-      </p-accordion>
+        </div>
+        <ng-template [ngIf]="!project.students">
+          Members not assigned yet!
+        </ng-template>
+      </div>
     </div>
 
-    <div style="margin-top:10px;">
-      <a pButton type="button" label="Go to project home" routerLink='/projects/{{project.ProjectId}}' class="ui-button-info"></a>
+    <div class="card-footer">
+      <a class="btn btn-sm btn-link" type="button" routerLink='/projects/{{project.ProjectId}}'>Go to project home</a>
     </div>
-
-  </p-panel>
+  </div>
 </div>

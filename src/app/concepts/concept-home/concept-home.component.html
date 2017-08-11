@@ -1,41 +1,48 @@
-<div class="panel panel-primary">
-
-    <div class="panel-heading">
+<div>
+    <div>
         <h3>
-        {{concept.ConceptTitle}}
+            {{concept.ConceptTitle}}
         </h3>
     </div>
 
-    <div class="panel-body">
+    <div>
         {{concept.ConceptDescription}}
         <hr/>
         <ng-template [ngIf]="loggedInUser.isAdmin()">
-
-            <div>
-                <h4> Particiapting Institutions</h4>
-            </div>
-            <ng-template [ngIf]="universities">
+            <clr-stack-view>
+                <clr-stack-header>Particiapting Institutions</clr-stack-header>
 
 
-                <p-accordion [multiple]="true">
+                <ng-template [ngIf]="universities">
+
+
                     <div *ngFor="let university of universities ">
 
-                        <p-accordionTab [selected]="true">
-                            <p-header>
-                                {{university.Name}}
-                            </p-header>
-                            <div *ngFor="let project of university.projects ">
-                                <app-project-card [project]="project"></app-project-card>
-                            </div>
-                        </p-accordionTab>
+                        <clr-stack-block [clrSbExpanded]="false">
+                            <clr-stack-label> {{university.Name}}
+                            </clr-stack-label>
+
+                            <clr-stack-block>
+                                                                <clr-stack-label data-ng-style="width:10%">
+                                                                </clr-stack-label>
+
+
+                                <clr-stack-content style="width:90%">
+                                <div *ngFor="let project of university.projects ">
+                                    <app-project-card [project]="project"></app-project-card>
+                                </div>
+                                </clr-stack-content>
+                            </clr-stack-block>
+
+                        </clr-stack-block>
                     </div>
-                </p-accordion>
-            </ng-template>
+                </ng-template>
 
-            <ng-template [ngIf]="!universities">
-                <div class="alert alert-info" role="alert">No particpants yet</div>
+                <ng-template [ngIf]="!universities">
+                    <div class="alert alert-info" role="alert">No particpants yet</div>
 
-            </ng-template>
+                </ng-template>
+            </clr-stack-view>
         </ng-template>
     </div>
 

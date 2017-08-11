@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { User } from '../models/index';
 
 import { AlertService, AuthenticationService, UserService } from '../services/index';
 
@@ -17,6 +18,8 @@ import { AlertService, AuthenticationService, UserService } from '../services/in
 
 export class LoginComponent implements OnInit {
     model: any = {};
+    loggedInUser: User;
+
     loading = false;
     returnUrl: string;
 
@@ -24,9 +27,10 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService,private userService:UserService) { }
+        private alertService: AlertService, private userService: UserService) { }
 
     ngOnInit() {
+
         // reset login status
         this.authenticationService.logout();
 
@@ -39,7 +43,14 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
             data => {
-                this.router.navigate([this.returnUrl]);
+                this.loggedInUser = this.userService.getLocalUser();
+                if (this.loggedInUser.isAdmin()) {
+                    this.router.navigate(["/concepts/list/available"]);
+
+                } else {
+                    this.router.navigate(["/projects"]);
+
+                }
             },
             error => {
                 if (error.status == 401) {
@@ -51,6 +62,6 @@ export class LoginComponent implements OnInit {
                 }
                 this.loading = false;
                 console.log(error);
-            });
+            });     
     }
 }

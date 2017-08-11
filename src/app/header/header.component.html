@@ -1,78 +1,53 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-        aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-      <!--<a class="navbar-brand navbar-center" href="#">PRAXIM LEARNING</a>-->
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ng-template [ngIf]="authenticationService.isAuthenticated()">
+<header class="header header-6">
+  <div class="branding">
+    <a href="..." class="nav-link">
+      <clr-icon shape="vm-bug">
+      </clr-icon>
+      <span class="title"> Praxim Learning</span>
+    </a>
+  </div>
+  <div class="header-actions">
+    <ng-template [ngIf]="authenticationService.isAuthenticated()">
 
-        <ul class="nav navbar-nav">
-
-          <li routerLinkActive="active"><a routerLink="/projects">Projects</a></li>
-          <li class="dropdown" appDropdown>
-
-            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Concepts <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li routerLinkActive="active" *ngIf="loggedInUser.isTeacher()"><a routerLink="/concepts/list/registered">My Registered concepts</a></li>
-              <li routerLinkActive="active" *ngIf="loggedInUser.isTeacher()"><a routerLink="/concepts/list/available">Available concepts</a></li>
-              <li routerLinkActive="active" *ngIf="loggedInUser.isAdmin()"><a routerLink="/concepts/list/available">My Concepts</a>
-
-            </ul>
-            </li>
-
-            <li routerLinkActive="active" *ngIf="loggedInUser.isTeacher()"><a routerLink="/students">Students</a></li>
-        </ul>
-      </ng-template>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">ABOUT</a></li>
-
-        <li class="dropdown" appDropdown *ngIf="authenticationService.isAuthenticated()">
-          <a  class="dropdown-toggle" data-toggle="dropdown">
-            <span class="glyphicon glyphicon-user"></span>
-            <strong>{{ loggedInUser.FirstName }}</strong>
-            <span class="glyphicon glyphicon-chevron-down"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <div class="navbar-login">
-                <div class="row">
-                  <div class="col-lg-4">
-                    <p class="text-center">
-                      <span class="glyphicon glyphicon-user icon-size"></span>
-                    </p>
-                  </div>
-                  <div class="col-lg-8">
-                    <p class="text-left"><strong>    {{ loggedInUser.FirstName }} {{ loggedInUser.LastName }}
-</strong></p>
-                    <p class="text-left small">{{ loggedInUser.UserName }}</p>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="divider navbar-login-session-bg"></li>
-            <li><a href="#">Password change<span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-            <li class="divider"></li>
-            <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
-            <li class="divider"></li>
-
-            <li><a (click)="onLogout()" style="cursor:pointer">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-          </ul>
-        </li>
-        <li *ngIf="!authenticationService.isAuthenticated()">
-          <a href routerLink="/login">LOGIN
+      <clr-dropdown clrMenuPosition="bottom-right">
+        <button class="nav-text" clrDropdownToggle>
+          {{ loggedInUser.email }}               
+          <clr-icon shape="caret down"></clr-icon>
+            </button>
+        <clr-dropdown-menu>
+          <a href="..." clrDropdownItem>Preferences</a>
+          <a (click)="onLogout()" clrDropdownItem>Log out</a>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </ng-template>
+    <ng-template [ngIf]="!authenticationService.isAuthenticated()">
+      <a href routerLink="/login" class="nav-link nav-text">LOGIN
             
           </a>
-        </li>
-
-      </ul>
-
-    </div>
+    </ng-template>
   </div>
-</nav>
+
+</header>
+<ng-template [ngIf]="authenticationService.isAuthenticated()">
+
+  <nav class="subnav">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link " href="#">Dashboard</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="/projects">Projects</a>
+      </li>
+      <clr-dropdown clrMenuPosition="bottom-right">
+        <button class="nav-text" clrDropdownToggle>
+          Concepts              
+          <clr-icon shape="caret down"></clr-icon>
+            </button>
+        <clr-dropdown-menu>
+          <li routerLinkActive="active" *ngIf="loggedInUser.isTeacher()"><a routerLink="/concepts/list/registered">My Registered concepts</a></li>
+          <li routerLinkActive="active" *ngIf="loggedInUser.isTeacher()"><a routerLink="/concepts/list/available">Available concepts</a></li>
+          <li routerLinkActive="active" *ngIf="loggedInUser.isAdmin()"><a routerLink="/concepts/list/available">My Concepts</a>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </ul>
+  </nav>
+</ng-template>

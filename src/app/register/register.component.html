@@ -1,81 +1,79 @@
-<app-header>
-</app-header>
-<div class="col-md-8 col-md-offset-3">
+<div class="login-wrapper">
+    <form class="login" name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
 
-    <p-panel >
-       <p-header>
-           Register
-       </p-header>
-        <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-            <alert></alert>
-            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
-                <div class="ui-grid-col-2">
-                    First Name
-                </div>
-                <div class="ui-grid-col-6">
-                    <input type="text" class="form-control" name="FirstName" [(ngModel)]="model.FirstName" #FirstName="ngModel" required />
-                </div>
-                <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !FirstName.valid">
-                        <i class="fa fa-close"></i> Firstname is required
-                    </div>
+        <label class="title">
+            <h3 class="welcome">Welcome to</h3>
+            Praxim Learning
+        </label>
+
+        <div class="login-group">
+            <div>
+                First Name
+            </div>
+            <div>
+                <input type="text" class="form-control" name="FirstName" [(ngModel)]="model.FirstName" #FirstName="ngModel" required />
+            </div>
+            <div>
+                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !FirstName.valid">
+                    <i class="fa fa-close"></i> Firstname is required
                 </div>
             </div>
-            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
-                <div class="ui-grid-col-2">
-                    Last Name
-                </div>
-                <div class="ui-grid-col-6">
-                    <input type="text" class="form-control" name="LastName" [(ngModel)]="model.LastName" #LastName="ngModel" required />
-                </div>
-                <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !LastName.valid">
-                        <i class="fa fa-close"></i> Lastname is required
-                    </div>
+        </div>
+        <div class="login-group">
+            <div>
+                Last Name
+            </div>
+            <div>
+                <input type="text" class="form-control" name="LastName" [(ngModel)]="model.LastName" #LastName="ngModel" required />
+            </div>
+            <div >
+                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !LastName.valid">
+                    <i class="fa fa-close"></i> Lastname is required
                 </div>
             </div>
+        </div>
 
-            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
-                <div class="ui-grid-col-2">
-                    Email
-                </div>
-                <div class="ui-grid-col-6">
-                    <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required email="true" />
+        <div class="login-group">
+            <div>
+                Email
+            </div>
+            <div>
+                <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required email="true" />
 
-                </div>
-
-                <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !email.valid">
-                        <i class="fa fa-close"></i> Email is required
-                    </div>
-                </div>
             </div>
 
-            <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
-                <div class="ui-grid-col-2">
-                    Password
-                </div>
-                <div class="ui-grid-col-6">
-                    <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-
-
-                </div>
-
-                <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !password.valid">
-                        <i class="fa fa-close"></i> password is required
-                    </div>
+            <div>
+                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !email.valid">
+                    <i class="fa fa-close"></i> Email is required
                 </div>
             </div>
+        </div>
 
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-2"> &nbsp; </div>
-                <div class="ui-grid-col-6">
-                    <button [disabled]="loading" class="btn btn-primary btn-lg btn-block">Register</button>
-                </div>
+        <div class="login-group">
+            <div>
+                Password
+            </div>
+            <div>
+                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+
+
             </div>
 
-        </form>
-    </p-panel>
+            <div>
+                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="f.submitted && !password.valid">
+                    <i class="fa fa-close"></i> password is required
+                </div>
+            </div>
+        </div>
+        <alert></alert>
+
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-2"> &nbsp; </div>
+            <div class="ui-grid-col-6">
+                <button [disabled]="loading" class="btn btn-primary btn-lg btn-block">Register</button>
+            </div>
+        </div>
+
+    </form>
 
 </div>

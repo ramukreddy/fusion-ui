@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ClarityModule } from "clarity-angular";
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,7 +31,7 @@ import { HeaderComponent } from './header/header.component';
 import { ConceptCardComponent } from './concepts/concept-card/concept-card.component';
 import { ConceptListingComponent } from './concepts/concept-listing/concept-listing.component';
 import { ConceptRegisteredListingComponent } from './concepts/concept-listing/concept-registered-listing.component';
-import {ConceptAvailableListingComponent} from './concepts/concept-listing/concept-available-listing.component';
+import { ConceptAvailableListingComponent } from './concepts/concept-listing/concept-available-listing.component';
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ConceptsComponent } from './concepts/concepts.component';
@@ -74,6 +75,7 @@ import { ProjectTimelineComponent } from './projects/project-home/project-timeli
   ],
   imports: [
     BrowserModule,
+    ClarityModule.forRoot(),
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,

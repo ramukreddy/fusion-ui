@@ -1,15 +1,18 @@
-<div class="panel panel-primary">
-  <alert></alert>
 
-  <div class="panel-heading">
-    {{header}}
-  </div>
-  <div class="panel-body">
+  <div class="dox-wrapper">
+    <div class="dox-wrapper dox-header new-component-layout">
 
-    <div *ngFor="let concept of concepts ">
-      <app-concept-card [concept]="concept"></app-concept-card>
+      <section>
+        <h5>{{header}}</h5>
+      </section>
     </div>
-    <router-outlet></router-outlet>
 
+    <section class="dox-content">
+      <div class="content-wrapper">
+        <div *ngFor="let concept of concepts ">
+          <app-concept-card [concept]="concept"></app-concept-card>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </section>
   </div>
-</div>

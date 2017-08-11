@@ -1,21 +1,33 @@
-<div style="margin-top:10px;">
+<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 
-  <p-panel>
-    <p-header>
-      <div class="ui-helper-clearfix">
-        <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:5px;">{{ concept.ConceptTitle }}</span>
-        <span class="ui-panel-title pull-right"> Concept Type : Basic</span>
+  <div class="card">
+    <div class="card-header">
+      {{ concept.ConceptTitle }}
+    </div>
+
+    <div class="card-block" style="height:300px;overflow:scroll;">
+      <div class="card-media-block">
+        <img src="/assets/images/logo.png" class="card-media-image">
+        <div class="card-media-description">
+          <span class="card-media-title">
+                            Company Name
+                        </span>
+          <span class="card-media-text">
+        {{ concept.ConceptFromDate | date }} to {{ concept.ConceptToDate | date }}
+                        </span>
+        </div>
       </div>
-    </p-header>
-    <div>
-      {{ concept.ConceptDescription}}
 
-    </div>
-    <div style="margin-top:10px;">
+      <div class="card-text">
+        {{ concept.ConceptDescription}}
 
-      <a pButton type="button" label="Register" (click)="RegisterToConcept(concept)" class="ui-button-primary" *ngIf="!isAlreadyRegistered && loggedInUser.isTeacher()"></a>
-      <a pButton type="button" label="Go to concept home" routerLink='/concepts/{{concept.ConceptId}}' class="ui-button-info"></a>
+      </div>
     </div>
 
-  </p-panel>
+
+    <div class="card-footer">
+      <a class="btn btn-sm btn-link" type="button" (click)="RegisterToConcept(concept)" *ngIf="!isAlreadyRegistered && loggedInUser.isTeacher()">Register</a>
+      <a class="btn btn-sm btn-link" type="button" routerLink='/concepts/{{concept.ConceptId}}'>Go to concept home</a>
+    </div>
+  </div>
 </div>
