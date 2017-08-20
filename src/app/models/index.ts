@@ -3,4 +3,4 @@ export * from './project';
 export * from './concept';
 export * from './company';
 export * from './student';
-export * from './university';
+export * from './College';

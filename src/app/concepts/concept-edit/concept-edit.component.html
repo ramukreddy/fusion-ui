@@ -1,80 +1,52 @@
-<div class="row">
-<alert></alert>
-  <div class="col-xs-12">
-    <form (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+<form (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+  <section class="form-block">
+    <alert></alert>
 
-      <div class="row">
-        <div class="col-xs-12">
-        </div>
-        <div class="col-xs-10">
-          <div class="form-group">
-            <label for="conceptTitle"> Title</label>
-            <input type="text" name="conceptTitle" class="form-control" [(ngModel)]="model.conceptTitle" #conceptTitle="ngModel" required
-            />
-            <div *ngIf="f.submitted && !conceptTitle.valid" class="help-block">Concept title is required</div>
+    <div class="form-group">
+      <label for="conceptTitle"> Concept Title</label>
+      <input type="text" name="conceptTitle" class="form-control" [(ngModel)]="model.conceptTitle" #conceptTitle="ngModel" required
+        placeholder="Enter concept title here" />
+      <div *ngIf="f.submitted && !conceptTitle.valid" class="help-block">Concept title is required</div>
+    </div>
 
-          </div>
-        </div>
+    <div class="form-group">
+      <label for="conceptDescription"> Description</label>
+      <p-editor name="conceptDescription" [(ngModel)]="model.conceptDescription" [style]="{'height':'320px'}" #conceptDescription="ngModel"></p-editor>
+    </div>
+
+
+    <div class="form-group">
+      <label for="conceptStartDate">Start date</label>
+      <input type="date" name="conceptStartDate" [(ngModel)]="model.conceptStartDate " (ngModelChange)="model.conceptStartDate = $event"
+        #conceptStartDate="ngModel" />
+
+      <label for="conceptEndDate">End date</label>
+      <input type="date" name="conceptEndDate" [(ngModel)]="model.conceptEndDate " (ngModelChange)="model.conceptEndDate = $event"
+        #conceptEndDate="ngModel" />
+
+    </div>
+
+    <div class="form-group">
+      <div class="checkbox">
+        <clr-checkbox [clrChecked]="true" name="conceptOpenToInstitution" [(ngModel)]="model.conceptOpenToInstitution" binary="true"
+          #conceptOpenToInstitution="ngModel">
+          Open to institution </clr-checkbox>
+
       </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="conceptDescription"> Description</label>
-
-            <p-editor name="conceptDescription" [(ngModel)]="model.conceptDescription" [style]="{'height':'320px'}" #conceptDescription="ngModel"></p-editor>
+    </div>
 
 
-          </div>
+        <div class="form-group">
+          <label for="conceptMaxParticipants">Max participants</label>
+          <p-spinner [min]="0" [max]="100" name="conceptMaxParticipants" [(ngModel)]="model.conceptMaxParticipants" #conceptMaxParticipants="ngModel"></p-spinner>
+
         </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <button type="submit" class="btn btn-success" [disabled]="!f.valid">Save</button>
+        <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
       </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="conceptStartDate">Start date</label>
-            <p-calendar name="conceptStartDate" [(ngModel)]="model.conceptStartDate " (ngModelChange)="model.conceptStartDate = $event"
-              #conceptStartDate="ngModel" [showIcon]="true"></p-calendar>
-
-
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="conceptEndDate">End date</label>
-            <p-calendar name="conceptEndDate" [(ngModel)]="model.conceptEndDate " (ngModelChange)="model.conceptEndDate = $event" #conceptEndDate="ngModel"
-              [showIcon]="true"></p-calendar>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="conceptOpenToInstitution">Open to institution</label>
-            <p-checkbox name="conceptOpenToInstitution" [(ngModel)]="model.conceptOpenToInstitution" binary="true" #conceptOpenToInstitution="ngModel"></p-checkbox>
-
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="conceptMaxParticipants">Max participants</label>
-            <p-spinner [min]="0" [max]="100" name="conceptMaxParticipants" [(ngModel)]="model.conceptMaxParticipants" #conceptMaxParticipants="ngModel"></p-spinner>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <button type="submit" class="btn btn-success" [disabled]="!f.valid">Save</button>
-          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+    </div>
+  </section>
+</form>

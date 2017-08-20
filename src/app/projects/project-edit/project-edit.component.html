@@ -1,57 +1,71 @@
-
 <form (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+  <section class="form-block">
+
     <alert></alert>
 
-  <div class="form-group">
-    <label for="title">Project Title</label>
-    <input type="text" name="title" class="form-control" [(ngModel)]="model.title" #title="ngModel" required style="width:75%;" />
-    <div *ngIf="f.submitted && !title.valid" class="help-block">Project Title is required</div>
+    <div class="form-group">
+      <label for="title">Select Concept</label>
+                 <div class="select">
+                   <select id="selectedConceptId" name="selectedConceptId"
+                    [(ngModel)]="selectedConceptId" (change)="initForConcept()">
+                    <option value="Default">Select concept </option>
+                    <option *ngFor="let concept of concepts" [value]="concept.ConceptId">{{concept.ConceptTitle}}</option>
+                </select>
+                 </div>
 
-  </div>
+    </div>
+    <div class="form-group">
+      <label for="title">Project Title</label>
+      <input type="text" name="title" class="form-control" [(ngModel)]="model.title" #title="ngModel" required style="width:75%;"
+      />
+      <div *ngIf="f.submitted && !title.valid" class="help-block">Project Title is required</div>
 
-  <div class="form-group">
-    <label for="description">Project Description</label>
-    <p-editor name="description" [(ngModel)]="model.description" [style]="{'height':'320px'}" #description="ngModel"></p-editor>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Project Description</label>
+      <p-editor name="description" [(ngModel)]="model.description" [style]="{'height':'320px'}" #description="ngModel"></p-editor>
 
 
-  </div>
+    </div>
 
 
-  <div class="form-group">
-    <label for="startDate">Project start date</label>
-    <!--  <p-calendar name="startDate" [(ngModel)]="model.startDate " (ngModelChange)="model.startDate = $event" #startDate="ngModel"
+    <div class="form-group">
+      <label for="startDate">Project start date</label>
+      <!--  <p-calendar name="startDate" [(ngModel)]="model.startDate " (ngModelChange)="model.startDate = $event" #startDate="ngModel"
       [showIcon]="true"></p-calendar>
       -->
-    <input type="date" name="startDate" class="form-control" [(ngModel)]="model.startDate" #startDate="ngModel"  style="width:25%;" />
+      <input type="date" name="startDate" class="form-control" [(ngModel)]="model.startDate" #startDate="ngModel" style="width:25%;"
+      />
+      <label for="endDate">Project end date</label>
+      <!--<p-calendar name="endDate" [(ngModel)]="model.endDate " (ngModelChange)="model.endDate = $event" #endDate="ngModel" [showIcon]="true"></p-calendar>-->
+      <input type="date" name="endDate" class="form-control" [(ngModel)]="model.endDate" #endDate="ngModel" style="width:25%;"
+      />
 
-  </div>
+    </div>
 
 
 
-  <div class="form-group">
-    <label for="endDate">Project end date</label>
-    <!--<p-calendar name="endDate" [(ngModel)]="model.endDate " (ngModelChange)="model.endDate = $event" #endDate="ngModel" [showIcon]="true"></p-calendar>-->
-    <input type="date" name="endDate" class="form-control" [(ngModel)]="model.endDate" #endDate="ngModel" style="width:25%;"/>
 
-  </div>
 
-  <div class="form-group">
-    <label style="float:left;" for="students">Select students</label>
-        <div style="width:75%">
+    <div class="form-group">
+      <label style="float:left;" for="students">Select students</label>
+      <div style="width:75%">
 
-      <p-autoComplete [style]="{'width':'100%'}" name="students" #students="ngModel" [(ngModel)]="model.students" [suggestions]="filteredStudentsMultiple"
-        (completeMethod)="filterStudentMultiple($event)" [minLength]="1" placeholder="Start typing student names " field="FirstName"
-        [multiple]="true">
-        <ul>
-     <!-- <li *ngFor="let student of model.students">{{student.FirstName}},{{student.LastName}}</li>-->
-    </ul>
-      </p-autoComplete>
-        </div>
-  </div>
+        <p-autoComplete [style]="{'width':'100%'}" name="students" #students="ngModel" [(ngModel)]="model.students" [suggestions]="filteredStudentsMultiple"
+          (completeMethod)="filterStudentMultiple($event)" [minLength]="1" placeholder="Start typing student names " field="FirstName"
+          [multiple]="true">
+          <ul>
+            <!-- <li *ngFor="let student of model.students">{{student.FirstName}},{{student.LastName}}</li>-->
+          </ul>
+        </p-autoComplete>
+      </div>
+    </div>
 
-  <div class="row">
+    <div class="row">
 
-    <button type="submit" class="btn btn-success" [disabled]="!f.valid">Save</button>
-    <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
-  </div>
+      <button type="submit" class="btn btn-success" [disabled]="!f.valid">Save</button>
+      <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+    </div>
+  </section>
 </form>

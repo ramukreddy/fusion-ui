@@ -44,6 +44,8 @@ import { JwtService } from "./utils/jwt.service";
 import { StudentCohortService } from "./services/student-cohort.service";
 import { ConceptHomeComponent } from './concepts/concept-home/concept-home.component';
 import { ProjectTimelineComponent } from './projects/project-home/project-timeline/project-timeline.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileCardComponent } from './profile/profile-card/profile-card.component';
 
 
 
@@ -71,7 +73,9 @@ import { ProjectTimelineComponent } from './projects/project-home/project-timeli
     StudentListingComponent,
     ConceptEditComponent,
     ConceptHomeComponent,
-    ProjectTimelineComponent
+    ProjectTimelineComponent,
+    ProfileComponent,
+    ProfileCardComponent
   ],
   imports: [
     BrowserModule,

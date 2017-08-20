@@ -17,6 +17,7 @@ import { StudentListingComponent } from './students/student-listing/student-list
 import { ConceptHomeComponent } from "./concepts/concept-home/concept-home.component";
 import { ConceptRegisteredListingComponent } from "./concepts/concept-listing/concept-registered-listing.component";
 import { ConceptAvailableListingComponent } from "./concepts/concept-listing/concept-available-listing.component";
+import { ProfileComponent } from "./profile/profile.component";
 
 
 
@@ -60,6 +61,12 @@ const appRoutes: Routes = [
       { path: 'invite', component: RegisterComponent }
 
     ]
+  },
+  {
+    path: 'profile', component: ProfileComponent
+  },
+  {
+    path: 'profile/:id', component: ProfileComponent
   },
 
   // otherwise redirect to home

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../models/index';
+//import * as AWS from "aws-sdk/global";
 
 import { AlertService, AuthenticationService, UserService } from '../services/index';
 
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
-
+    
     login() {
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
@@ -47,8 +48,13 @@ export class LoginComponent implements OnInit {
                 if (this.loggedInUser.isAdmin()) {
                     this.router.navigate(["/concepts/list/available"]);
 
-                } else {
+                }
+                if (this.loggedInUser.isTeacher()) {
                     this.router.navigate(["/projects"]);
+
+                }
+                 if (this.loggedInUser.isStudent()) {
+                    this.router.navigate(["/home"]);
 
                 }
             },
@@ -62,6 +68,10 @@ export class LoginComponent implements OnInit {
                 }
                 this.loading = false;
                 console.log(error);
-            });     
+            });
+    }
+    fileEvent(event) {
+        var files = event.srcElement.files;
+        console.log(files);
     }
 }

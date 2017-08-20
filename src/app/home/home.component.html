@@ -1,5 +1,20 @@
+<div class="row">
+    <div class="col-sm-8 col-md-2">
 
+        <app-profile-card></app-profile-card>
+    </div>
+    <div class="col-sm-12 col-md-8">
 
-<div class="col-sm-8 col-sm-offset-2" style="padding-top: 60px;">
-    <router-outlet></router-outlet>
+    <clr-tabs>
+      <clr-tab>
+        <button clrTabLink>Your active projects</button>
+        <ng-template [(clrIfActive)]="profileActive">
+          <clr-tab-content>
+        <app-project-listing></app-project-listing>
+          </clr-tab-content>
+        </ng-template>
+      </clr-tab>
+    </clr-tabs>
+    
+    </div>
 </div>

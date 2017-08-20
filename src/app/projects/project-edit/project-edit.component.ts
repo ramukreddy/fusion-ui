@@ -6,6 +6,7 @@ import { AlertService } from "../../services/index";
 import { Project, User, Concept } from "../../models/index";
 import { ProjectService, UserService, StudentCohortService } from "../../services/index";
 import { ConceptService } from "../../services/concept.service";
+import { Observable } from "rxjs/Rx";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class ProjectEditComponent implements OnInit {
   id: Number;
   editMode = false;
   model: Project;
-  concepts: SelectItem[];
+  concepts: Concept[];
   selectedConceptId: number;
   filteredStudentsMultiple: any[];
   concept: Concept;
@@ -38,6 +39,7 @@ export class ProjectEditComponent implements OnInit {
 
 
     this.model = new Project();
+    this.concept = new Concept();
     this.route.params
       .subscribe(
       (params: Params) => {
@@ -51,6 +53,10 @@ export class ProjectEditComponent implements OnInit {
 
     if (this.editMode) {
       this.editProject();
+
+    } else {
+
+      this.loadConcepts();
 
     }
     if (this.selectedConceptId) {
@@ -90,18 +96,24 @@ export class ProjectEditComponent implements OnInit {
     );
   }
   initForConcept() {
+    console.log("initForConcept"+this.selectedConceptId);
 
-    this.conceptService.getConceptById(this.selectedConceptId).then(concepts => {
-      if (concepts) {
-        this.concept = concepts[0];
-      }
-      if(this.concept){
-              this.model.title = this.concept.ConceptTitle;
-              this.model.description=this.concept.ConceptDescription;
-              this.model.registerToConceptId=this.concept.ConceptId;
-      }
+    this.conceptService.getConceptById(this.selectedConceptId).subscribe(concept => {
 
+      if(concept && concept[0]){
+          this.model.title = concept[0].ConceptTitle;
+      this.model.description = concept[0].ConceptDescription;
+      this.model.registerToConceptId = concept[0].ConceptId;
+      }
+      
     });
+
+  }
+
+  loadConcepts() {
+    this.conceptService.getRegisteredConcepts().subscribe(data => {
+      this.concepts = data;
+    })
   }
 
   filterStudentMultiple(event) {

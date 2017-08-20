@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Http, Response } from "@angular/http";
-import { Concept, Student, University } from "../models";
+import { Concept, Student, College } from "../models";
 import { Observable } from "rxjs/Rx";
 import { JwtService } from "../utils/jwt.service";
 
@@ -11,10 +11,9 @@ export class ConceptService {
 
   constructor(private http: Http, private jwtService: JwtService) { }
 
-  getConceptById(id: number) {
+  getConceptById(id: number):Observable<Concept> {
     return this.http.get(this.apiUrl + "/"+id, this.jwtService.jwt())
-      .toPromise()
-      .then(res => <Concept[]>res.json())
+      .map(res => <Concept>res.json())
       .catch(this.handleError);
   }
 
@@ -47,8 +46,9 @@ export class ConceptService {
 
   }
 
-  getUniversitiesForConceptById(id: number): Observable<University[]> {
-    return this.http.get("/assets/projects.json", this.jwtService.jwt())
+  getUniversitiesForConceptById(id: number): Observable<College[]> {
+   // return this.http.get("/assets/projects.json", this.jwtService.jwt())
+    return this.http.get(this.apiUrl + "/"+id+"/universities", this.jwtService.jwt())
       .map(this.extractData)
       .catch(this.handleError);
   }

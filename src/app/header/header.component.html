@@ -1,12 +1,20 @@
 <header class="header header-6">
-  <div class="branding">
+  <div class="branding" style="padding-left:10%">
     <a href="..." class="nav-link">
       <clr-icon shape="vm-bug">
       </clr-icon>
-      <span class="title"> Praxim Learning</span>
+    <span class="title"> Praxim Learning</span>
     </a>
   </div>
-  <div class="header-actions">
+  <div class="header-nav">
+    <ng-template [ngIf]="authenticationService.isAuthenticated()">
+    <a href="javascript://" class="nav-link nav-text">Dashboard</a>
+    <a routerLinkActive="active" class="nav-link nav-text" routerLink="/projects">Projects</a>
+    <a routerLinkActive="active" class="nav-link nav-text" routerLink="/concepts/list/registered" *ngIf="loggedInUser.isTeacher()">Concepts</a>
+    <a routerLinkActive="active" class="nav-link nav-text" routerLink="/concepts/list/available" *ngIf="loggedInUser.isAdmin()">Concepts</a>
+    </ng-template>
+  </div>
+  <div class="header-actions" style="padding-right:10%">
     <ng-template [ngIf]="authenticationService.isAuthenticated()">
 
       <clr-dropdown clrMenuPosition="bottom-right">
@@ -15,7 +23,7 @@
           <clr-icon shape="caret down"></clr-icon>
             </button>
         <clr-dropdown-menu>
-          <a href="..." clrDropdownItem>Preferences</a>
+          <a routerLink="/profile" clrDropdownItem>Profile</a>
           <a (click)="onLogout()" clrDropdownItem>Log out</a>
         </clr-dropdown-menu>
       </clr-dropdown>
@@ -28,6 +36,7 @@
   </div>
 
 </header>
+<!--
 <ng-template [ngIf]="authenticationService.isAuthenticated()">
 
   <nav class="subnav">
@@ -50,4 +59,7 @@
       </clr-dropdown>
     </ul>
   </nav>
+  
+ 
 </ng-template>
+-->

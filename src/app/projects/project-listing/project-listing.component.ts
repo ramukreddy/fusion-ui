@@ -18,13 +18,21 @@ export class ProjectListingComponent implements OnInit {
   }
 
   ngOnInit() {
-
     let localUser = this.userService.getLocalUser();
-    this.projectSerive.getAllByUserId(localUser.userId).subscribe(
-      data => this.projects = data,
-      error => this.error = error.statusText
+    if (localUser.isStudent()) {
+      this.projectSerive.getAllByStudentId(localUser.userId).subscribe(
+        data => this.projects = data,
+        error => this.error = error.statusText
 
-    );
+      );
+    } else {
+      this.projectSerive.getAllByUserId(localUser.userId).subscribe(
+        data => this.projects = data,
+        error => this.error = error.statusText
+
+      );
+    }
+
   }
 
 }

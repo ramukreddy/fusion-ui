@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from "@angular/router";
-import { User, Concept, University } from "../../models";
+import { User, Concept, College } from "../../models";
 import { UserService, ConceptService } from "../../services";
+import { Observable } from "rxjs/Rx";
+
 @Component({
   selector: 'app-concept-home',
   templateUrl: './concept-home.component.html',
@@ -10,15 +12,15 @@ import { UserService, ConceptService } from "../../services";
 export class ConceptHomeComponent implements OnInit {
   loggedInUser: User;
   conceptId: number;
-  concept: Concept;
-  universities: University[];
+  concept:    Concept;;
+  universities: College[];
   constructor(private route: ActivatedRoute,
     private userService: UserService,
     private conceptService: ConceptService) { }
 
   ngOnInit() {
     this.loggedInUser = this.userService.getLocalUser();
-    this.concept = new Concept();
+  
 
     this.route.params
       .subscribe(
@@ -32,9 +34,13 @@ export class ConceptHomeComponent implements OnInit {
   }
 
   initConcept() {
-    this.concept = new Concept();
-    this.concept.ConceptTitle = " To better understand how the brain controls movement.";
-    this.concept.ConceptDescription = "Movement disorders have many different causes and symptoms. Researchers still do not fully understand which parts of the brain are involved in fine movement. They want to learn about which brain regions could be abnormal in people with movement disorders.";
+   this.conceptService.getConceptById(this.conceptId).subscribe(data=>{
+     console.log(data);
+     this.concept=data[0];
+    });
+   console.log(this.concept);
+//    this.concept.ConceptTitle = " To better understand how the brain controls movement.";
+//    this.concept.ConceptDescription = "Movement disorders have many different causes and symptoms. Researchers still do not fully understand which parts of the brain are involved in fine movement. They want to learn about which brain regions could be abnormal in people with movement disorders.";
     this.loadUniversities();
     // this.conceptService.
 

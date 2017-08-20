@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-sm-8 col-md-2">
+
+    <app-profile-card></app-profile-card>
+  </div>
+  <div class="col-sm-12 col-md-8">
+
+    <clr-tabs>
+      <clr-tab>
+        <button clrTabLink>Profile</button>
+        <ng-template [(clrIfActive)]="profileActive">
+          <clr-tab-content>
+            <h3 style="margin-bottom:10px"><i class="glyphicon glyphicon-user"></i> ABOUT</h3>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="row mgbt-xs-0">
+                  <label class="col-xs-5 control-label">First Name:</label>
+                  <div class="col-xs-7 controls">Mariah</div>
+                  <!-- col-sm-10 -->
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row mgbt-xs-0">
+                  <label class="col-xs-5 control-label">Last Name:</label>
+                  <div class="col-xs-7 controls">Caraiban</div>
+                  <!-- col-sm-10 -->
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row mgbt-xs-0">
+                  <label class="col-xs-5 control-label">User Name:</label>
+                  <div class="col-xs-7 controls">Mariah</div>
+                  <!-- col-sm-10 -->
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row mgbt-xs-0">
+                  <label class="col-xs-5 control-label">Email:</label>
+                  <div class="col-xs-7 controls">mariah@Vendroid.com</div>
+                  <!-- col-sm-10 -->
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row mgbt-xs-0">
+                  <label class="col-xs-5 control-label">City:</label>
+                  <div class="col-xs-7 controls">Los Angeles</div>
+                  <!-- col-sm-10 -->
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row mgbt-xs-0">
+                  <label class="col-xs-5 control-label">Country:</label>
+                  <div class="col-xs-7 controls">United States</div>
+                  <!-- col-sm-10 -->
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row mgbt-xs-0">
+                  <label class="col-xs-5 control-label">Birthday:</label>
+                  <div class="col-xs-7 controls">Jan 22, 1984</div>
+                  <!-- col-sm-10 -->
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row mgbt-xs-0">
+                  <label class="col-xs-5 control-label">Interests:</label>
+                  <div class="col-xs-7 controls">Basketball, Web, Design, etc.</div>
+                  <!-- col-sm-10 -->
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row mgbt-xs-0">
+                  <label class="col-xs-5 control-label">Website:</label>
+                  <div class="col-xs-7 controls"><a href="http://Vendroid.venmond.com">Vendroid.venmond.com</a></div>
+                  <!-- col-sm-10 -->
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row mgbt-xs-0">
+                  <label class="col-xs-5 control-label">Phone:</label>
+                  <div class="col-xs-7 controls">+1-234-5678</div>
+                  <!-- col-sm-10 -->
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-sm-5">
+                <h3><i class="glyphicon glyphicon-education"></i> EDUCATION</h3>
+                <div class="list-group">
+                  <ul class="list">
+                    <li class="fa fa-circle-o "> <i></i> <span class="control-label"> Bachelor's degree, E-Commerce/Electronic Commerce at <a href="http://www.venmond.com">UCLA</a> <span class="menu-info"><span class="menu-date"> August 2003 ~ July 2008</span></span>
+                      </span>
+                    </li>
+                    <li class="fa fa-circle-o "> <i></i> <span class="control-label"> Student at <a href="http://www.venmond.com">Web Design Education</a> <span class="menu-info"><span class="menu-date"> March 2006 ~ February 2007</span></span>
+                      </span>
+                    </li>
+                    <li class=" fa fa-circle-o"> <i></i> <span class="control-label"> Student at <a href="http://www.venmond.com">St. Louis High School</a> <span class="menu-info"><span class="menu-date"> August 2000 ~ July 2003 </span></span>
+                      </span>
+                    </li>
+                    <li class=" fa fa-circle-o"> <i></i><span class="control-label"> Student at <a href="http://www.venmond.com">St. Monica Junior High School</a> <span class="menu-info"><span class="menu-date"> August 1998 ~ July 2000</span></span>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </clr-tab-content>
+        </ng-template>
+      </clr-tab>
+
+      <clr-tab>
+        <button clrTabLink>Projects</button>
+        <ng-template [(clrIfActive)]="projectsActive">
+          <clr-tab-content>
+                    <app-project-listing></app-project-listing>
+
+          </clr-tab-content>
+        </ng-template>
+      </clr-tab>
+
+      <clr-tab>
+        <button clrTabLink>Settings</button>
+        <ng-template [(clrIfActive)]="settingsActive">
+          <clr-tab-content>
+            ...
+          </clr-tab-content>
+        </ng-template>
+      </clr-tab>
+
+
+    </clr-tabs>
+  </div>
+</div>

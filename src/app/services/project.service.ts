@@ -21,6 +21,14 @@ export class ProjectService {
         })
     }
 
+    getAllByStudentId(userId: Number): Observable<Project[]> {
+        return this.http.get(this.apiUrl + "/students/" + userId).map(function (res) {
+            var data = res.json();
+            console.log(data);
+            return data;
+        })
+    }
+
     getById(id: Number) {
         return this.http.get(this.apiUrl + "/" + id, this.jwt())
             .map((response: Response) => {

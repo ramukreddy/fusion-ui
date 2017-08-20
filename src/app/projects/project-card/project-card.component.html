@@ -10,11 +10,9 @@
       <div class="card-media-block">
         <img src="/assets/images/logo.png" class="card-media-image">
         <div class="card-media-description">
-          <span class="card-media-title">
-                            Project Owner : 
-                        </span>
+         
           <span class="card-media-text">
-        {{ project.startDate | date }} to {{ project.endDate | date }}
+        {{ project.ProjectStartDate | date }} to {{ project.ProjectEndDate | date }}
                         </span>
         </div>
       </div>
@@ -30,7 +28,8 @@
       </div>
       <div class="card-text">
         <div *ngFor="let student of project.students ">
-          <a class="btn btn-sm btn-link" type="button" routerLink='/projects/{{project.ProjectId}}'>{{student.FirstName}},{{student.LastName}}</a>
+          <img class="img-circle" src="/assets/images/logo.png" width="50" height="50" >
+          <a class="btn btn-sm btn-link" type="button" routerLink='/profile/{{student.UserId}}'>{{student.FirstName}},{{student.LastName}}</a>
 
         </div>
         <ng-template [ngIf]="!project.students">

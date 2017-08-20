@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { AuthenticationService, UserService } from "app/services";
 import { User } from "app/models";
 import { Router } from "@angular/router";
@@ -20,14 +20,18 @@ export class HeaderComponent implements OnInit {
     this.loggedInUser = this.userService.getLocalUser();
     console.log("header model :");
     console.log(this.loggedInUser);
+    this.authenticationService.change.subscribe(data=>{
+      console.log("login just happend")
+          this.loggedInUser = this.userService.getLocalUser();
+
+    })
   }
 
   onLogout() {
     console.log("Onlogout ")
+    this.loggedInUser = new User(-1);
     this.authenticationService.logout();
     this.router.navigateByUrl("/");
-
-
 
   }
 }

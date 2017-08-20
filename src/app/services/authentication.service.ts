@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter  } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -9,6 +9,8 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class AuthenticationService {
     constructor(private http: Http) { }
+  @Output()
+  change: EventEmitter<any> = new EventEmitter<any>();
 
     login(username: string, password: string) {
         let bodyString = JSON.stringify({ username: username, password: password })
@@ -23,6 +25,8 @@ export class AuthenticationService {
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
+                                        this.change.emit(user);
+
                 }
             });
     }
